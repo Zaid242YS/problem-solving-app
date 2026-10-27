@@ -1,0 +1,1194 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Problem Solving Workbook — Creed to Commerce™ Companion App</title>
+<meta name="description" content="Interactive companion app for The Problem Solving Workbook: a money mindset and budgeting workbook for small business owners. Developed by Zaid Adib Ansari and the Balanced Middle Path Academy in conjunction with the Creed to Commerce™ Framework.">
+<meta name="theme-color" content="#93400f">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "The Problem Solving Workbook — Companion App",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any (web browser)",
+  "description": "A money mindset and budgeting workbook for small business owners: self-assessment, goal setting, 18 problem-solving worksheets, 14 reflection prompts, a 30-day action plan and reusable frameworks, with PDF reporting.",
+  "creator": {
+    "@type": "Organization",
+    "name": "The Balanced Middle Path Academy, LLC",
+    "alternateName": "BMPA",
+    "founder": { "@type": "Person", "name": "Zaid Adib Ansari" }
+  },
+  "isBasedOn": "Creed to Commerce™ Framework",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+:root{
+  --brown:#93400f; --brown-d:#702f0a; --cream:#f6ece2; --ink:#1f2937; --muted:#4b5563; --soft:#9ca3af;
+  --line:#e5e7eb; --card:#f9fafb; --field:#f0f3ff; --fieldb:#c7d2fe;
+  --green:#1f4d3a; --gold:#c9a24b; --ok:#166534; --warn:#b45309; --bad:#b91c1c;
+  --fs:1;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:Helvetica,Arial,system-ui,-apple-system,"Segoe UI",sans-serif;background:#ece6df;color:var(--ink);font-size:calc(16px*var(--fs));line-height:1.5}
+button{font:inherit;cursor:pointer}
+a{color:var(--brown)}
+.ar{font-family:"Amiri","Scheherazade New","Traditional Arabic",serif;direction:rtl}
+#app{max-width:900px;margin:0 auto;background:#fff;min-height:100vh;box-shadow:0 0 40px rgba(0,0,0,.08);position:relative}
+
+/* ---------- cover ---------- */
+#cover{min-height:100vh;background:var(--brown);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:34px 26px;position:relative;text-align:center}
+#cover:before{content:"";position:absolute;inset:14px;border:2px solid #fff;pointer-events:none}
+#cover:after{content:"";position:absolute;inset:22px;border:1px solid rgba(255,255,255,.7);pointer-events:none}
+#cover .bas{font-size:clamp(32px,7vw,48px);line-height:1.6;margin-top:22px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.6);min-width:70%}
+#cover .for{font-weight:700;letter-spacing:.04em;font-size:14px;color:#f6e4cf}
+#cover h1{font-size:clamp(40px,10vw,68px);line-height:1.1;margin:10px 0 18px}
+#cover .bar{width:76px;height:3px;background:#fff;margin:0 auto 20px}
+#cover .tag{font-size:clamp(16px,2.6vw,20px);max-width:560px;margin:0 auto;color:#fbeede}
+.btn-begin{background:#fff;color:var(--brown);border:0;border-radius:999px;padding:18px 44px;font-weight:800;letter-spacing:.05em;font-size:16px;box-shadow:0 6px 18px rgba(0,0,0,.22)}
+.btn-begin:hover{transform:translateY(-1px)}
+#cover .sub{font-weight:700;font-size:13px;border-bottom:1px solid rgba(255,255,255,.6);padding-bottom:10px;margin-bottom:10px}
+#cover .dev{font-size:12.5px;max-width:560px;color:#fbeede;margin:0 auto 6px}
+#cover .cc{font-family:"Amiri",serif;color:var(--gold);font-size:15px;margin-top:10px}
+#cover .resume{margin-top:12px;background:transparent;border:1px solid rgba(255,255,255,.7);color:#fff;border-radius:999px;padding:9px 22px;font-size:14px}
+
+/* ---------- chrome ---------- */
+.top{position:sticky;top:0;z-index:30;background:#fff;border-bottom:1px solid var(--line)}
+.topbar{display:flex;align-items:center;gap:10px;padding:8px 14px}
+.topbar .brand{font-weight:800;color:var(--brown);font-size:14px;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topbar .prog{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)}
+.pbar{width:90px;height:7px;background:#eee;border-radius:9px;overflow:hidden}
+.pbar>i{display:block;height:100%;background:linear-gradient(90deg,var(--green),var(--gold));width:0%}
+.ib{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:7px 11px;font-weight:700;color:var(--ink);font-size:13px}
+.ib.pri{background:var(--brown);color:#fff;border-color:var(--brown)}
+.pills{display:flex;gap:8px;padding:2px 14px 10px;overflow-x:auto;scrollbar-width:thin}
+.pill{flex:1 0 auto;min-width:92px;text-align:center;background:var(--card);border:1px solid var(--line);color:var(--muted);font-weight:700;font-size:13px;padding:11px 10px;border-radius:14px}
+.pill.on{background:var(--brown);color:#fff;border-color:var(--brown)}
+.pill:hover:not(.on){background:#f1ece6}
+
+main{padding:6px 20px 120px}
+.pg{max-width:780px;margin:0 auto;animation:fade .18s ease}
+@keyframes fade{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}
+.eyebrow{margin:26px 0 0;color:var(--brown);font-weight:800;font-size:13.5px;letter-spacing:.02em;text-transform:uppercase}
+.badge{display:flex;align-items:center;gap:14px;margin-top:22px}
+.badge b{width:52px;height:52px;border-radius:50%;background:var(--brown);color:#fff;display:flex;align-items:center;justify-content:center;font-size:21px}
+.badge span{color:var(--brown);font-weight:800;font-size:12.5px;text-transform:uppercase}
+h1.t{font-size:clamp(26px,5.6vw,40px);line-height:1.15;margin:6px 0 12px;color:#1f2937}
+h1.t.q{font-size:clamp(21px,4.6vw,29px)}
+.rule{height:3px;width:64px;background:var(--brown);margin:0 0 18px}
+.intro{color:var(--muted);margin:0 0 16px}
+.lead{margin:0 0 14px}
+.call{background:var(--cream);border:1.3px solid var(--brown);border-radius:16px;padding:16px 20px;margin:20px 0}
+.call h3{margin:0 0 6px;color:#7c3510;font-size:15px;text-transform:uppercase}
+.call p{margin:0;font-size:15px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 20px;margin:12px 0}
+.card h3{margin:0 0 4px;color:#7c3510;font-size:17px}
+.card p{margin:0;font-size:15px}
+.card.hi{background:var(--cream);border-color:#e7d3bd;outline:2px solid var(--brown)}
+.card a.chip{display:inline-block;margin:8px 6px 0 0;background:#fff;border:1px solid var(--brown);color:var(--brown);padding:4px 11px;border-radius:999px;font-size:13px;text-decoration:none;font-weight:700}
+.q{display:block;font-weight:800;margin:20px 0 6px;font-size:15.5px}
+.f{width:100%;background:var(--field);border:1.5px solid var(--fieldb);border-radius:8px;padding:11px 12px;font:inherit;color:var(--ink);resize:vertical}
+textarea.f{min-height:46px;line-height:1.5;overflow:hidden}
+.f:focus{outline:none;border-color:var(--brown);box-shadow:0 0 0 3px rgba(147,64,15,.18);background:#fff}
+.il{display:flex;gap:10px;align-items:center;margin:14px 0;flex-wrap:wrap}
+.il label{font-weight:800;color:var(--muted);font-size:15px}
+.il .f{flex:1;min-width:160px;width:auto}
+.il .f.sm{max-width:200px;flex:0 1 200px}
+.quote{font-family:"Amiri",serif;font-style:italic;color:var(--brown);text-align:center;margin:36px 0 8px;font-size:18px}
+.list{list-style:none;padding:0;margin:14px 0}
+.list li{display:flex;gap:12px;margin:10px 0}
+.list li:before{content:"";flex:0 0 9px;height:9px;border-radius:50%;background:var(--brown);margin-top:9px}
+.toc{display:flex;align-items:center;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin:12px 0;width:100%;text-align:left;color:var(--ink)}
+.toc:hover{border-color:var(--brown);background:#fbf6f1}
+.toc .n{flex:0 0 46px;height:46px;border-radius:50%;background:var(--brown);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center}
+.toc .tt{flex:1;font-size:18px;font-weight:800}
+.toc .tt small{display:block;font-weight:400;font-size:12px;color:var(--muted);margin-top:3px}
+.toc .mini{display:block;height:5px;background:#e9e5e0;border-radius:9px;margin-top:6px;max-width:180px;overflow:hidden}
+.toc .mini i{display:block;height:100%;background:var(--green);width:0}
+.toc .pp{color:var(--brown);font-weight:800}
+
+/* quiz */
+.stmt{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.stmt .no{color:var(--brown);font-weight:800;font-size:19px;flex:0 0 30px}
+.stmt .tx{font-weight:800}
+.opts{display:flex;gap:6px 22px;flex-wrap:wrap;margin-top:12px}
+.opts label{display:flex;align-items:center;gap:8px;color:var(--muted);cursor:pointer;padding:6px 4px}
+.opts input{appearance:none;width:22px;height:22px;border:2px solid var(--brown);border-radius:4px;background:#fff;cursor:pointer;display:grid;place-content:center;margin:0}
+.opts input:checked{background:var(--brown)}
+.opts input:checked:after{content:"✓";color:#fff;font-size:15px;line-height:1;font-weight:800}
+.big{font-size:28px;font-weight:800;color:var(--brown)}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.btn{border:1.5px solid var(--brown);background:#fff;color:var(--brown);padding:10px 16px;border-radius:12px;font-weight:800;font-size:14px}
+.btn.fill{background:var(--brown);color:#fff}
+.btn.green{background:var(--green);border-color:var(--green);color:#fff}
+.btn.sm{padding:6px 11px;font-size:12.5px}
+.btn.danger{border-color:var(--bad);color:var(--bad)}
+
+/* action */
+.task{border-bottom:1px solid var(--line);padding:14px 0}
+.task .row1{display:flex;gap:14px;align-items:flex-start}
+.chk{appearance:none;flex:0 0 26px;width:26px;height:26px;border:2px solid var(--brown);border-radius:5px;background:#fff;display:grid;place-content:center;margin:0;cursor:pointer}
+.chk:checked{background:var(--brown)}
+.chk:checked:after{content:"✓";color:#fff;font-weight:800;font-size:18px;line-height:1}
+.task .tt{font-weight:800;font-size:16px}
+.task .row2{display:grid;grid-template-columns:200px 1fr;gap:10px;margin:10px 0 0 40px;align-items:center}
+.task .row2 label{font-size:13px;font-weight:800;color:var(--muted);display:block;margin-bottom:3px}
+.task.done .tt{text-decoration:line-through;color:var(--soft)}
+.cl{display:flex;gap:14px;align-items:center;margin:14px 0;font-size:16px}
+
+/* calc panels */
+.calc{background:#fff;border:2px dashed var(--gold);border-radius:14px;padding:14px 18px;margin:22px 0}
+.calc h4{margin:0 0 8px;color:var(--green);font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+.calc .r{display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px dotted var(--line);font-size:15px}
+.calc .r:last-child{border:0}
+.calc .r b{color:var(--ink)}
+.calc .note{font-size:13px;color:var(--muted);margin-top:6px}
+.calc .good{color:var(--ok)} .calc .warn{color:var(--warn)} .calc .bad{color:var(--bad)}
+.meter{height:12px;background:#eee;border-radius:9px;overflow:hidden;margin:8px 0}
+.meter i{display:block;height:100%;background:var(--green);width:0;transition:width .3s}
+.meter.over i{background:var(--bad)}
+.debt{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:8px;margin:6px 0}
+.debt label{font-size:12px;font-weight:800;color:var(--muted)}
+.mx{width:100%;border-collapse:separate;border-spacing:0;margin:14px 0;font-size:14px}
+.mx th{background:var(--brown);color:#fff;padding:12px 8px;text-align:center;font-size:13px}
+.mx th:first-child{border-radius:14px 0 0 14px} .mx th:last-child{border-radius:0 14px 14px 0}
+.mx td{padding:6px;border-bottom:1px solid var(--line);vertical-align:bottom}
+.mx td small{display:block;color:var(--soft);font-weight:800;font-size:11px}
+.mx tr.win td{background:#f3faf4}
+.mx .tot{font-weight:800;text-align:center}
+.sol{display:flex;gap:8px;align-items:center;margin:6px 0}
+.sol .no{flex:0 0 26px;color:var(--brown);font-weight:800;text-align:right}
+.star{background:#fff;border:1.5px solid var(--fieldb);border-radius:8px;width:38px;height:38px;font-size:19px;color:var(--soft);padding:0}
+.star.on{color:var(--gold);border-color:var(--gold);background:#fffaeb}
+.logitem{display:flex;gap:10px;justify-content:space-between;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:8px 0;font-size:14px}
+.logitem small{color:var(--muted);display:block}
+
+/* footer of page */
+.pf{margin-top:34px;border-top:1px solid var(--line);padding-top:10px;display:flex;justify-content:space-between;gap:8px;font-size:11.5px;color:var(--soft)}
+.ccf{margin-top:8px;text-align:center;font-family:"Amiri",serif;font-size:14px;color:var(--green);letter-spacing:.02em;border-top:2px solid var(--gold);padding-top:6px}
+.ccf b{color:var(--gold)}
+.pagetools{display:flex;gap:8px;flex-wrap:wrap;margin:26px 0 0;padding-top:10px;border-top:1px dashed var(--line)}
+.pagetools .btn{font-size:12.5px;padding:7px 12px;border-color:var(--line);color:var(--muted)}
+
+/* bottom bar */
+.bottom{position:fixed;bottom:0;left:0;right:0;z-index:40;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-top:1px solid var(--line)}
+.bottom .in{max-width:900px;margin:0 auto;display:flex;gap:8px;align-items:center;padding:9px 12px calc(9px + env(safe-area-inset-bottom))}
+.bottom select{flex:1;min-width:0;border:1px solid var(--line);border-radius:10px;padding:10px;background:#fff;font:inherit;font-size:13px}
+.bottom .ib{padding:10px 16px}
+
+/* drawer + modal */
+.veil{position:fixed;inset:0;background:rgba(17,24,39,.45);z-index:80;display:none}
+.veil.on{display:block}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(400px,92vw);background:#fff;z-index:90;transform:translateX(105%);transition:transform .22s;overflow:auto;padding:18px 18px 40px;box-shadow:-8px 0 30px rgba(0,0,0,.2)}
+.drawer.on{transform:none}
+.drawer h2{margin:0 0 4px;color:var(--brown);font-size:20px}
+.drawer h5{margin:20px 0 6px;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--green)}
+.drawer .btn{display:block;width:100%;text-align:left;margin:6px 0}
+.drawer .set{display:flex;gap:8px;align-items:center;margin:8px 0;font-size:14px}
+.drawer .set input,.drawer .set select{flex:1;border:1.5px solid var(--fieldb);background:var(--field);border-radius:8px;padding:8px;font:inherit}
+.modal{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(620px,92vw);max-height:86vh;overflow:auto;background:#fff;border-radius:18px;z-index:95;padding:22px;display:none;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.modal.on{display:block}
+.modal h2{margin:0 0 8px;color:var(--brown)}
+.modal ol{padding-left:20px} .modal li{margin:7px 0}
+.toast{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);background:#111827;color:#fff;padding:10px 16px;border-radius:12px;font-size:14px;z-index:120;display:none;gap:12px;align-items:center}
+.toast.on{display:flex}
+.toast button{background:transparent;color:var(--gold);border:0;font-weight:800;text-decoration:underline}
+
+/* report */
+#reportView{display:none;max-width:900px;margin:0 auto;background:#fff;min-height:100vh}
+body.reporting #app>:not(#reportView){display:none!important}
+body.reporting #reportView{display:block}
+.rbar{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);padding:12px 16px;z-index:20}
+.rbar h2{margin:0 0 8px;color:var(--brown);font-size:19px}
+.rbar .opts2{display:flex;gap:6px 16px;flex-wrap:wrap;font-size:13.5px;margin:8px 0}
+.rbar .opts2 label{display:flex;gap:6px;align-items:center}
+#reportDoc{padding:26px 30px 40px;font-size:13.5px;color:#111}
+.rcover{text-align:center;border:2px solid var(--brown);padding:22px 18px 18px;border-radius:6px;margin-bottom:18px;background:#fffdfa}
+.rcover .bas{font-size:34px;color:var(--brown);line-height:1.6}
+.rcover h1{margin:4px 0;font-size:28px;color:var(--ink)}
+.rcover .sub{color:var(--muted)}
+.rcover .meta{display:flex;justify-content:center;flex-wrap:wrap;gap:6px 22px;margin-top:10px;font-size:13px}
+.rcover .gold{height:3px;background:linear-gradient(90deg,var(--green),var(--gold));margin:12px auto;width:55%}
+.rsec{margin:20px 0;break-inside:auto}
+.rsec>h2{background:var(--brown);color:#fff;padding:7px 12px;font-size:15px;margin:0 0 8px;border-left:6px solid var(--gold)}
+.rsec h3{margin:12px 0 4px;color:var(--brown);font-size:14px;border-bottom:1px solid var(--line);padding-bottom:3px}
+.rrow{margin:7px 0;break-inside:avoid;page-break-inside:avoid}
+.rq{font-weight:700;font-size:12.5px;color:#374151}
+.ra{white-space:pre-wrap;padding:4px 0 4px 10px;border-left:3px solid var(--gold);margin-top:2px}
+.ra.empty{color:var(--soft);font-style:italic;border-left-color:#ddd}
+.rtab{width:100%;border-collapse:collapse;margin:6px 0;font-size:12.5px;break-inside:avoid}
+.rtab th{background:#f3ece5;text-align:left;padding:5px 7px;border:1px solid #ddd}
+.rtab td{padding:5px 7px;border:1px solid #ddd;vertical-align:top}
+.rkpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:8px 0}
+.rkpi div{border:1px solid #e3d6c8;background:#fffaf4;padding:8px 10px;border-radius:8px}
+.rkpi small{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.rkpi b{font-size:16px;color:var(--brown)}
+.rfoot{text-align:center;font-family:"Amiri",serif;color:var(--green);border-top:3px solid var(--gold);padding-top:8px;margin-top:26px;font-size:14px}
+.rdisc{font-size:11.5px;color:var(--muted);text-align:center;margin-top:8px}
+#printAll{display:none}
+
+@media (max-width:620px){
+  main{padding:4px 14px 120px}
+  .task .row2{grid-template-columns:1fr;margin-left:0}
+  .debt{grid-template-columns:1fr 1fr}
+  .topbar .prog .pbar{width:56px}
+  .mx th,.mx td{padding:4px 3px;font-size:12px}
+  #reportDoc{padding:18px 14px}
+}
+
+/* ---------- print ---------- */
+@media print{
+  @page{size:A4;margin:14mm 12mm 18mm}
+  body{background:#fff;font-size:11.5pt}
+  #app{box-shadow:none;max-width:none}
+  .top,.bottom,.veil,.drawer,.modal,.toast,#cover,.pagetools,.rbar,.btnrow,.noprint,.calc .note.np{display:none!important}
+  body.reporting #reportView,body.printing-report #reportView{display:block!important}
+  body.printing-all main,body.printing-all #reportView{display:none!important}
+  body.printing-all #printAll{display:block!important}
+  body.printing-report main,body.printing-report #printAll{display:none!important}
+  .pg{max-width:none;animation:none}
+  .printpg{break-after:page;page-break-after:always;padding:0}
+  .printpg:last-child{break-after:auto}
+  main{padding:0}
+  .f{background:#fff!important;border:0!important;border-bottom:1px solid #999!important;border-radius:0!important;box-shadow:none!important;padding:3px 2px!important;min-height:26px;color:#000}
+  textarea.f{background-image:repeating-linear-gradient(transparent,transparent 25px,#bbb 26px)!important;resize:none;overflow:visible}
+  select.f{appearance:none}
+  .call,.card{break-inside:avoid}
+  #reportDoc{padding:0}
+  .rsec>h2{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .rcover,.rkpi div,.mx th,.badge b,.toc .n,.call,.pill.on{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .rfoot.fixed{position:fixed;bottom:0;left:0;right:0;background:#fff;margin:0}
+  .rsec>h2{break-after:avoid}
+}
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- COVER -->
+  <section id="cover" aria-label="Cover">
+    <div style="width:100%">
+      <div class="ar bas" lang="ar">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+    </div>
+    <div>
+      <div class="for">FOR SMALL BUSINESS OWNERS</div>
+      <h1>The Problem<br>Solving<br>Workbook</h1>
+      <div class="bar"></div>
+      <p class="tag">Fix the money leaks, master your numbers, and build a calmly profitable small business</p>
+    </div>
+    <div style="width:100%">
+      <button class="btn-begin" id="btnBegin">TAP TO BEGIN &rarr;</button><br>
+      <button class="resume" id="btnResume" style="display:none">Continue where I left off</button>
+    </div>
+    <div>
+      <div class="sub">A Money Mindset &amp; Budgeting Workbook for Small Business Owners</div>
+      <p class="dev">This Business Resource Guide was developed by Zaid Adib Ansari and the Balanced Middle Path Academy in conjunction with the Creed to Commerce Framework.</p>
+      <div class="cc">Creed to Commerce™ · The Balanced Middle Path Academy, LLC</div>
+    </div>
+  </section>
+
+  <!-- WORKBOOK CHROME -->
+  <header class="top" id="topChrome" style="display:none">
+    <div class="topbar">
+      <div class="brand">The Problem Solving Workbook</div>
+      <div class="prog" title="Fields completed"><span id="progTxt">0%</span><div class="pbar"><i id="progBar"></i></div></div>
+      <button class="ib" id="btnReport" title="Build a PDF report">PDF Report</button>
+      <button class="ib pri" id="btnMenu" aria-label="Open tools menu">☰ Tools</button>
+    </div>
+    <nav class="pills" id="pills" aria-label="Workbook sections"></nav>
+  </header>
+  <main id="main" style="display:none"><div id="pageView"></div></main>
+
+  <div class="bottom" id="bottomBar" style="display:none">
+    <div class="in">
+      <button class="ib" id="prev" aria-label="Previous page">&#8249; Prev</button>
+      <select id="jump" aria-label="Jump to page"></select>
+      <button class="ib pri" id="next" aria-label="Next page">Next &#8250;</button>
+    </div>
+  </div>
+
+  <!-- REPORT -->
+  <section id="reportView" aria-label="PDF report">
+    <div class="rbar">
+      <h2>PDF Report Builder</h2>
+      <div class="opts2" id="rOpts"></div>
+      <div class="btnrow" style="margin:6px 0 0">
+        <button class="btn fill" id="rPrint">Print / Save as PDF</button>
+        <button class="btn green" id="rDownload">Download PDF file</button>
+        <button class="btn" id="rBack">&larr; Back to workbook</button>
+      </div>
+    </div>
+    <div id="reportDoc"></div>
+  </section>
+
+  <div id="printAll"></div>
+</div>
+
+<!-- DRAWER -->
+<div class="veil" id="veil"></div>
+<aside class="drawer" id="drawer" aria-label="Tools menu">
+  <h2>Tools</h2>
+  <div style="font-family:Amiri,serif;color:var(--green)">Creed to Commerce™ · BMPA</div>
+
+  <h5>Reports &amp; printing</h5>
+  <button class="btn fill" data-act="report">Build PDF report</button>
+  <button class="btn" data-act="printfilled">Print my filled workbook (all 61 pages)</button>
+  <button class="btn" data-act="printblank">Print a blank workbook</button>
+
+  <h5>Your data</h5>
+  <button class="btn" data-act="export">Export backup (.json)</button>
+  <button class="btn" data-act="import">Import backup (.json)</button>
+  <input type="file" id="importFile" accept="application/json,.json" style="display:none">
+  <button class="btn" data-act="sample">Load sample data (see how it works)</button>
+  <button class="btn" data-act="clearsample">Clear sample data</button>
+  <button class="btn danger" data-act="clearall">Erase everything I typed</button>
+
+  <h5>Your settings</h5>
+  <div class="set"><label for="setBiz">Business</label><input id="setBiz" placeholder="Business name (for reports)"></div>
+  <div class="set"><label for="setCur">Currency</label>
+    <select id="setCur"><option>$</option><option>£</option><option>€</option><option>RM</option><option>SAR </option><option>AED </option><option>EGP </option><option>PKR </option><option>₹</option><option>₦</option></select></div>
+  <div class="set"><label for="setFont">Text size</label>
+    <select id="setFont"><option value="0.9">Small</option><option value="1">Normal</option><option value="1.12">Large</option><option value="1.25">Extra large</option></select></div>
+
+  <h5>Help</h5>
+  <button class="btn" data-act="help">How to use this app</button>
+  <button class="btn" data-act="cover">Back to cover</button>
+
+  <p style="font-size:12.5px;color:var(--muted);margin-top:18px">Everything you type is saved only in this browser on this device. Nothing is uploaded. Use <b>Export backup</b> to move your work to another device.</p>
+  <p style="font-size:12px;color:var(--muted)">This workbook offers educational prompts and frameworks only and is not financial, tax, or accounting advice. Please consult a qualified professional for decisions specific to your business.</p>
+  <p style="font-family:Amiri,serif;color:var(--green);text-align:center;border-top:2px solid var(--gold);padding-top:8px">Creed to Commerce™<br>The Balanced Middle Path Academy, LLC</p>
+</aside>
+
+<div class="modal" id="helpModal" role="dialog" aria-modal="true" aria-label="How to use this app">
+  <h2>How to use this app</h2>
+  <ol>
+    <li><b>Work in order.</b> Use the pill bar for sections, the Prev/Next buttons, or the page menu at the bottom. The Table of Contents cards are tappable.</li>
+    <li><b>Type anywhere.</b> Every line, box, checkbox and score is editable at any time. Your answers save automatically in this browser.</li>
+    <li><b>Take the quiz first.</b> The score, profile and recommended worksheets calculate for you. Lock your Day-1 score, then retake on Day 30.</li>
+    <li><b>Use the calculators.</b> Cash Flow, Profit-First Split, Emergency Buffer, Debt Detangler and Decision Matrix do the arithmetic live.</li>
+    <li><b>Edit and undo.</b> Each page has <i>Clear this page</i> (with Undo). Tools → <i>Load sample data</i> shows a filled example; <i>Clear sample data</i> removes only the sample.</li>
+    <li><b>PDF reporting.</b> Tools → <i>Build PDF report</i>. Choose sections, then <i>Print / Save as PDF</i> or <i>Download PDF file</i>. You can also print the whole workbook, filled or blank.</li>
+    <li><b>Back up.</b> Export a .json backup to move your work to another device, and Import it there.</li>
+  </ol>
+  <div class="btnrow"><button class="btn fill" id="helpClose">Got it</button></div>
+</div>
+<div class="toast" id="toast"><span id="toastMsg"></span><button id="toastUndo" style="display:none">Undo</button></div>
+
+<script>
+/* =====================================================================
+   The Problem Solving Workbook — Companion App
+   Creed to Commerce™ · The Balanced Middle Path Academy, LLC
+   Vanilla HTML/CSS/JS · single file · localStorage persistence
+   ===================================================================== */
+(function(){
+'use strict';
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const KEY='bmpa_problem_solving_workbook_v1';
+const TOTAL=61;
+const BAS='بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ';
+const CCLINE='Creed to Commerce™ · The Balanced Middle Path Academy, LLC';
+
+/* ---------------- state ---------------- */
+let S={v:{},c:{},log:[],meta:{cur:'$',biz:'',base:null,sampleKeys:[],sampleVals:{},font:1,page:3}};
+function loadState(){
+  try{const r=localStorage.getItem(KEY);if(r){const d=JSON.parse(r);S.v=d.v||{};S.c=d.c||{};S.log=d.log||[];S.meta=Object.assign(S.meta,d.meta||{});}}catch(e){}
+}
+let saveT;
+function save(){clearTimeout(saveT);saveT=setTimeout(()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}},200)}
+function saveNow(){clearTimeout(saveT);try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+
+/* ---------------- field registry ---------------- */
+const FIELDS=[]; const FBY={};
+let CUR=0;
+function reg(id,label,type){const f={id,label,type:type||'text',page:CUR};FIELDS.push(f);FBY[id]=f;}
+const TA=(id,label,rows)=>{reg(id,label);return `<label class="q" for="${id}">${esc(label)}</label><textarea id="${id}" class="f" data-k="${id}" rows="${rows||3}" aria-label="${esc(label)}"></textarea>`};
+const IN=(id,label,o)=>{o=o||{};reg(id,label);return `<label class="q" for="${id}">${esc(label)}</label><input id="${id}" class="f" data-k="${id}" type="${o.type||'text'}" ${o.im?`inputmode="${o.im}"`:''} ${o.ph?`placeholder="${esc(o.ph)}"`:''} autocomplete="off">`};
+const IL=(id,label,o)=>{o=o||{};reg(id,label);return `<div class="il"><label for="${id}">${esc(label)}</label><input id="${id}" class="f ${o.cls||''}" data-k="${id}" type="${o.type||'text'}" ${o.im?`inputmode="${o.im}"`:''} ${o.ph?`placeholder="${esc(o.ph)}"`:''} autocomplete="off"></div>`};
+const CALL=(t,x)=>`<div class="call"><h3>${esc(t)}</h3><p>${esc(x)}</p></div>`;
+const CARD=(t,x)=>`<div class="card"><h3>${esc(t)}</h3><p>${esc(x)}</p></div>`;
+const QUOTE=q=>`<p class="quote">— ${esc(q)} —</p>`;
+
+/* ---------------- helpers ---------------- */
+function num(s){if(s==null)return null;const t=String(s).replace(/,/g,'').replace(/[^0-9.\-]/g,'');if(t===''||t==='-'||t==='.')return null;const n=parseFloat(t);return isNaN(n)?null:n}
+function money(n){if(n==null||!isFinite(n))return '—';return S.meta.cur+Math.round(n).toLocaleString()}
+function pct(n){return n==null||!isFinite(n)?'—':(Math.round(n*10)/10)+'%'}
+function val(id){return (S.v[id]==null?'':String(S.v[id]))}
+function filled(f){if(f.type==='check')return !!S.c[f.id];return val(f.id).trim()!==''}
+function fmtDate(s){if(!s)return '';const d=new Date(s+'T00:00:00');return isNaN(d)?s:d.toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'})}
+function addDays(s,n){const d=new Date(s+'T00:00:00');d.setDate(d.getDate()+n);return d.toISOString().slice(0,10)}
+
+/* ---------------- quiz data ---------------- */
+const QS=[
+ `I check my business bank balance only when I'm worried something has bounced.`,
+ `I set my prices based on what feels "safe" rather than what the result is worth to the client.`,
+ `When a financial problem appears in my business, I tend to wait and hope it resolves itself.`,
+ `Personal and business spending still mix in the same account or card.`,
+ `I feel a wave of guilt when I pay myself properly from the business.`,
+ `I avoid opening my accounting software because I'm afraid of what I'll find.`,
+ `I offer a discount quickly the moment a client hesitates on price.`,
+ `I couldn't state my break-even number for a typical month without looking it up.`,
+ `One unexpected expense can throw my entire month off course.`,
+ `I believe "more revenue" would fix my money problems — even though revenue has grown before without fixing them.`
+];
+const OPT=['Never','Sometimes','Often','Always'];
+const PROFILES=[
+ {lo:0,hi:8,t:'The Steady Strategist',x:`Your money habits are fundamentally sound — your problems are optimisation problems, not survival problems. Go straight to the Constraint Finder, the 80/20 Profit Lens, and the pricing worksheets: your next win is leverage, not repair.`,go:[[26,'Constraint Finder'],[51,'80/20 Profit Lens'],[20,'Pricing Confidence Builder']]},
+ {lo:9,hi:16,t:'The Reactive Juggler',x:`You keep the plates spinning, but the business runs you as often as you run it. Your priority is systems: the Profit-First Split, the Weekly CFO Hour, and the Seasonal Cash Map will convert your hustle into something that holds its shape.`,go:[[21,'Profit-First Split'],[31,'Weekly CFO Hour'],[29,'Seasonal Cash Map']]},
+ {lo:17,hi:24,t:'The Avoidant Firefighter',x:`You're capable — but you only face the numbers when they're on fire, and avoidance is charging you interest. Start with the Cash Flow Reality Check and Your Money Story. Facing the numbers once, on paper, is the doorway out of the cycle.`,go:[[17,'Cash Flow Reality Check'],[15,'Your Money Story']]},
+ {lo:25,hi:30,t:'The Crisis Cycle',x:`Money in your business is a source of constant threat, and that is exhausting — but it is also the profile with the fastest, most visible wins ahead. Work this book slowly and in order, starting with Name the Real Problem. Ten pages from now, you will already feel different.`,go:[[14,'Name the Real Problem']]}
+];
+function quizScore(){let t=0,n=0;for(let i=1;i<=10;i++){const v=S.v['q'+i];if(v!==undefined&&v!==''){t+=+v;n++}}return {t,n}}
+function profileOf(t){return PROFILES.find(p=>t>=p.lo&&t<=p.hi)||PROFILES[0]}
+
+/* ---------------- action plan data ---------------- */
+const PHASES=[
+ {n:1,name:'Stabilise',days:'Days 1 to 10',why:`You cannot think clearly about growth while standing in a leak. These first ten days stop the bleeding — invoices out, leaks plugged, numbers faced.`,tasks:[
+  `Complete the Cash Flow Reality Check with real numbers (Worksheet 04)`,`Send every outstanding invoice — today, imperfect and sent`,`Message every late payer using your day-one script (Worksheet 17)`,`Cancel or downgrade the subscriptions flagged in your Expense Audit`,`Open (or ring-fence) a separate account for tax and profit`,`Book your first Weekly CFO Hour as a recurring calendar event`]},
+ {n:2,name:'Systemise',days:'Days 11 to 20',why:`Stability without systems just resets the countdown to the next crisis. These ten days build the machinery that keeps problems from returning.`,tasks:[
+  `Set up your Profit-First split percentages and make the first transfer`,`Automate the weekly buffer transfer — even a small one`,`Add your payment terms sentence to every invoice template`,`Raise the price on your most underpriced offer for all NEW enquiries`,`Run the Five Whys Drill on your most stubborn recurring problem`,`Set the 60-day reminder before your next seasonal dip`]},
+ {n:3,name:'Strengthen',days:'Days 21 to 30',why:`The final ten days convert new habits into identity. You stop being someone "trying to fix money" and become the owner who runs the numbers.`,tasks:[
+  `Hold the boundary conversation you named in Worksheet 17`,`Execute the 7-day solution test from your Twenty-Solutions Sprint`,`Review your 90-day targets — adjust the plan, never the ambition`,`Make your debt overpayment (or first buffer milestone) on schedule`,`Complete all fourteen Reflection Prompts in this workbook`,`Book a 30-minute month-end review and celebrate one win properly`]}
+];
+const BOOKS=[
+ ['Profit First','Mike Michalowicz','The allocation system behind Worksheet 08. Small percentages, separate accounts, permanent calm.'],
+ ['The Psychology of Money','Morgan Housel','Why smart owners make strange money decisions — and how behaviour beats spreadsheets.'],
+ ['Fix This Next','Mike Michalowicz','A triage system for deciding which business problem genuinely deserves you first.'],
+ ['Company of One','Paul Jarvis','Permission to build a profitable business that stays deliberately, calmly small.'],
+ ['Simple Numbers, Straight Talk, Big Profits','Greg Crabtree','Plain-English finance for owners: labour efficiency, real profit, and paying yourself properly.']
+];
+
+/* ---------------- worksheet data ---------------- */
+// block forms: ['ta',suffix,label,rows] ['in',suffix,label,{im}] ['x',key]
+const WS=[
+ {n:1,t:`Name the Real Problem`,i:`Most money stress in a small business is a symptom wearing a costume. This worksheet strips the costume off so you solve the actual problem — once.`,q:`A problem named precisely is already half-solved.`,b:[
+  ['ta','1',`Describe your biggest money problem the way you'd vent it to a trusted friend — raw, unfiltered, no professionalism required.`,4],
+  ['ta','2',`Now restate it in one neutral, measurable sentence: "The gap is ___ per month between ___ and ___."`,2],
+  ['ta','3',`What evidence proves this is the root problem and not just the loudest symptom?`,2],
+  ['ta','4',`Who or what does this problem cost the most — you, your family, your team, your customers? Be specific.`,2],
+  ['ta','5',`If this problem vanished tomorrow, which number in your business would change first?`,2]]},
+ {n:2,t:`Your Money Story`,i:`Your pricing, your invoicing courage, and your spending habits were all shaped long before you registered this business. Trace the script so you can rewrite it.`,q:`You are not your first draft of money beliefs.`,b:[
+  ['ta','1',`What is your earliest vivid memory of money in the home you grew up in?`,4],
+  ['ta','2',`Write one sentence about money you heard repeatedly growing up ("Money doesn't grow on trees", "Rich people are...").`,2],
+  ['ta','3',`Where does that exact sentence show up in how you price, invoice, or spend in your business today?`,4],
+  ['ta','4',`Think of a business owner whose money calm you admire. What do they believe about money that you don't — yet?`,2],
+  ['ta','5',`Write the belief you are formally retiring today, and the belief you are hiring to replace it.`,2]]},
+ {n:3,t:`Limiting Beliefs → Profitable Truths`,i:`A limiting belief is just a sentence you've repeated until it feels like a fact. Catch three of them and put a truer, more profitable sentence next to each.`,q:`Rewrite the sentence, and the behaviour follows.`,b:[
+  ['ta','1',`Limiting belief #1 (about what you can charge):`,2],
+  ['ta','2',`The more profitable truth #1 — what the evidence actually supports:`,2],
+  ['ta','3',`Limiting belief #2 (about what clients will accept or pay):`,2],
+  ['ta','4',`The more profitable truth #2:`,2],
+  ['ta','5',`Limiting belief #3 (about what kind of person makes good money):`,2],
+  ['ta','6',`The more profitable truth #3:`,2]]},
+ {n:4,t:`Cash Flow Reality Check`,i:`You cannot solve a problem you refuse to measure. Fill in real numbers — approximations are allowed, avoidance is not.`,q:`The numbers are neutral. Only the avoidance is expensive.`,b:[
+  ['in','1',`Average monthly revenue over the last 3 months:`,{im:'decimal',ph:'e.g. 8500'}],
+  ['in','2',`Total fixed monthly costs (rent, software, salaries, insurance):`,{im:'decimal',ph:'e.g. 3200'}],
+  ['in','3',`Variable costs as a rough % of each sale (materials, fees, delivery):`,{im:'decimal',ph:'e.g. 30'}],
+  ['in','4',`What you actually paid yourself, on average, each of the last 3 months:`,{im:'decimal',ph:'e.g. 1500'}],
+  ['in','5',`Your break-even number — the revenue that covers everything including your pay:`,{im:'decimal',ph:'calculated for you below — edit freely'}],
+  ['x','calc04'],
+  ['ta','6',`The gap between what I assumed and what these numbers say is true:`,3]]},
+ {n:5,t:`The Revenue Leak Finder`,i:`Before you chase new revenue, recover the revenue already leaking out. Most small businesses find a four-figure annual leak on this page.`,q:`Recovered money is the cheapest revenue you'll ever earn.`,b:[
+  ['ta','1',`Work you completed in the last 90 days that was never invoiced (or under-invoiced):`,2],
+  ['ta','2',`Clients currently paying late — names and total amount overdue:`,2],
+  ['ta','3',`Your most underpriced offer, and roughly how underpriced per sale:`,2],
+  ['ta','4',`Something you routinely do free that clients would happily pay for:`,2],
+  ['ta','5',`The ONE leak worth plugging first — and its estimated value over 12 months:`,2]]},
+ {n:6,t:`The Expense Audit`,i:`Every expense is an employee. Some earn their keep, some show up drunk. Review the payroll of your spending.`,q:`Cut with a scalpel, never a chainsaw.`,b:[
+  ['ta','1',`Subscriptions or services you'd cancel instantly if you watched the charge happen live:`,2],
+  ['ta','2',`Costs you could renegotiate this month (suppliers, software tiers, rent, rates):`,2],
+  ['ta','3',`The expense that quietly EARNS you money — name it so you never cut it in a panic:`,2],
+  ['ta','4',`Spending that is really emotional relief in a business costume (be honest):`,2],
+  ['ta','5',`Total monthly saving target from this audit, and where that saving will be redirected:`,2]]},
+ {n:7,t:`Pricing Confidence Builder`,i:`Undercharging is not humility — it is a hidden tax on your family paid to strangers. Build the case for the price the work deserves.`,q:`Charge for the destination, not the taxi ride.`,b:[
+  ['in','1',`Your current price for your main offer, and the last time you raised it:`],
+  ['ta','2',`What the client actually walks away with — the result, not the deliverables:`,4],
+  ['in','3',`The price your gut says that RESULT is honestly worth:`],
+  ['ta','4',`The exact fear that surfaces when you imagine quoting that number out loud:`,2],
+  ['in','5',`Your test: the price you will quote to the very next new enquiry:`]]},
+ {n:8,t:`The Profit-First Split`,i:`Profit is not what's left over — it's what you take first. Decide your allocation percentages before the next deposit lands.`,q:`Small percentages, moved consistently, end money chaos.`,b:[
+  ['in','1',`Profit % (start small — even 1% builds the muscle):`,{im:'decimal',ph:'e.g. 5'}],
+  ['in','2',`Owner's Pay % (your household is a creditor of this business):`,{im:'decimal',ph:'e.g. 40'}],
+  ['in','3',`Tax % (future-you refuses to be ambushed):`,{im:'decimal',ph:'e.g. 15'}],
+  ['in','4',`Operating Expenses % (the business runs on what remains):`,{im:'decimal',ph:'e.g. 40'}],
+  ['x','calc08'],
+  ['ta','5',`Date of your very first split transfer, and the account each slice moves to:`,4]]},
+ {n:9,t:`The Emergency Buffer Builder`,i:`A buffer is not savings — it is purchased calm. Every pound in it lowers the emotional temperature of every future problem.`,q:`You are not saving money. You are buying sleep.`,b:[
+  ['in','1',`Your bare-bones monthly survival number (business keeps breathing, nothing fancy):`,{im:'decimal',ph:'e.g. 4000'}],
+  ['in','2',`Buffer target: how many months of that number do you want in reserve?`,{im:'decimal',ph:'e.g. 3'}],
+  ['in','3',`What the buffer holds today (zero is an honest and acceptable answer):`,{im:'decimal',ph:'e.g. 0'}],
+  ['x','calc09'],
+  ['ta','4',`The automatic weekly or monthly transfer you're committing to, starting when:`,2],
+  ['ta','5',`One expense or habit you'll pause to feed the buffer, and for how long:`,2]]},
+ {n:10,t:`The Debt Detangler`,i:`Debt is heaviest when it's vague. List it, rank it, and pick one balance to attack while the rest wait politely in line.`,q:`One target at a time. Minimums on the rest. No shame, only math.`,b:[
+  ['x','debt1'],['x','debt2'],['x','debt3'],['x','calc10'],
+  ['ta','4',`Which balance dies first, and why that one (highest rate? smallest for momentum?):`,2],
+  ['ta','5',`The extra amount you'll aim at it monthly, and where that amount comes from:`,2]]},
+ {n:11,t:`The Five Whys Drill`,i:`Ask "why" five times and almost any surface problem confesses its root cause. Run your most stubborn money problem through the drill.`,q:`Fix the root and the symptoms stop growing back.`,b:[
+  ['in','p',`The problem, stated plainly:`],
+  ['in','1',`Why #1 — why is that happening?`],
+  ['in','2',`Why #2 — and why is THAT happening?`],
+  ['in','3',`Why #3:`],
+  ['in','4',`Why #4:`],
+  ['ta','5',`Why #5 — the root cause (usually a missing system, skill, or boundary):`,2]]},
+ {n:12,t:`Problem Inventory & Triage`,i:`You cannot solve everything this month — and trying to is why nothing gets solved. List the problems, then triage like a field medic.`,q:`Triage is not neglect. It is respect for your limited attention.`,b:[
+  ['ta','list',`List up to six money problems currently taking up space in your head:`,6],
+  ['ta','urgent',`Which ONE is urgent AND important — solving it protects cash within 30 days?`,2],
+  ['ta','sched',`Which are important but not urgent — schedule them, don't carry them:`,2],
+  ['ta','drop',`Which are neither — write them here as a formal act of putting them down:`,2]]},
+ {n:13,t:`The Constraint Finder`,i:`Every business has one bottleneck that sets the pace for everything else. Find yours and stop optimising the parts that were never the problem.`,q:`Strengthen the weakest link. The chain does the rest.`,b:[
+  ['ta','1',`Where does work, money, or decision-making pile up and wait in your business?`,2],
+  ['ta','2',`What usually happens right BEFORE cash slows down (fewer enquiries? slow delivery? late invoices?):`,2],
+  ['ta','3',`If you could instantly double one capacity — leads, delivery speed, collection speed — which would move profit most?`,2],
+  ['ta','statement',`State your constraint in one sentence: "The pace of my business is set by ___."`,2],
+  ['ta','5',`The cheapest experiment that could loosen that constraint within 14 days:`,2]]},
+ {n:14,t:`The Decision Ledger`,i:`Indecision has an invoice — it just never sends it to you directly. Total the cost of the money decision you've been postponing.`,q:`A good decision on Tuesday beats a perfect one never.`,b:[
+  ['ta','1',`A money decision you've been postponing (price rise, firing a client, cutting a cost, hiring help):`,2],
+  ['ta','2',`Roughly what does each month of NOT deciding cost you — in money, energy, or missed work?`,2],
+  ['ta','3',`The worst REALISTIC outcome if you decided today (not the catastrophe movie — the realistic one):`,2],
+  ['ta','4',`What information do you genuinely still need — versus what you're gathering for comfort?`,2],
+  ['in','5',`Your decision deadline, written as a date you'll defend:`]]},
+ {n:15,t:`The Twenty-Solutions Sprint`,i:`Your first three ideas are everyone's ideas. Force twenty and somewhere around idea twelve, your brain starts producing originals.`,q:`Quantity first. Quality is hiding inside it.`,b:[
+  ['in','p',`The problem, in one line:`],
+  ['x','sol'],
+  ['ta','pick',`Circle your three favourites above (tap the stars), then write the ONE you'll test within 7 days and how:`,3]]},
+ {n:16,t:`The Seasonal Cash Map`,i:`Your business has seasons whether you plan for them or not. Map the tide so the low months stop arriving as surprises.`,q:`Plan for the tide and the tide stops being a crisis.`,b:[
+  ['ta','1',`Your strongest three months of the year — and what drives them:`,2],
+  ['ta','2',`Your weakest three months — and honestly, why:`,2],
+  ['ta','3',`What could you pre-sell, book, or invoice BEFORE the dip to soften it?`,2],
+  ['ta','4',`One large expense you'll shift out of the lean months into the strong ones:`,2],
+  ['in','5',`The calendar reminder you'll set to prepare 60 days before the next dip:`]]},
+ {n:17,t:`Money Boundaries`,i:`Half of small-business money problems are boundary problems collecting interest. Write the scripts now, while you're calm.`,q:`Boundaries written in calm survive moments of pressure.`,b:[
+  ['ta','1',`Your payment terms policy, in one firm sentence you'll put on every invoice:`,2],
+  ['ta','2',`Word-for-word: the message you'll send a late payer on day one overdue:`,4],
+  ['ta','3',`The sentence you'll use when a client adds work outside the agreed scope:`,2],
+  ['ta','4',`Your discount rule — when you will, when you won't, and never on the spot:`,2],
+  ['in','5',`The one boundary conversation you've been avoiding, and the date you'll have it:`]]},
+ {n:18,t:`Your Weekly CFO Hour`,i:`Every business you admire has a finance function. Yours starts as one protected hour a week — same day, same time, coffee allowed.`,q:`One honest hour a week outworks a month of worry.`,b:[
+  ['in','1',`Your CFO Hour — day and time, recurring, in the calendar:`],
+  ['in','2',`Agenda item 1 (always first): the number you check to know the week's truth:`],
+  ['in','3',`Agenda item 2: invoices to send and late payers to chase:`],
+  ['in','4',`Agenda item 3: upcoming bills and transfers (profit split, buffer, tax):`],
+  ['in','5',`Agenda item 4: one problem from this workbook to move one step forward:`],
+  ['in','6',`Your small reward when the hour is done (rituals stick when they end well):`]]}
+];
+const GOALS=[
+ {n:1,t:`Your Money Vision`,i:`Before you solve problems, define what "solved" looks like. Write the destination so every worksheet after this one has a direction.`,b:[
+  ['ta','a',`Twelve months from today, describe an ordinary Tuesday in your business when money is no longer the loudest problem.`,4],
+  ['ta','b',`What monthly owner's pay would make you feel genuinely secure — not rich, secure? Write the number and what it covers.`,2],
+  ['ta','c',`Which money task do you never want to dread again (invoicing, tax time, checking the balance)? What does "calm" look like there?`,2],
+  ['ta','d',`What will you finally say YES to once the business funds it — and what will you permanently say NO to?`,4]]},
+ {n:2,t:`The 90-Day Money Target`,i:`A year is too far to feel. Ninety days is close enough to act on. Set three targets: one revenue, one profit, one habit.`,b:[
+  ['in','rev',`Revenue target for the next 90 days (a number you'd be proud of, not a fantasy):`],
+  ['in','profit',`Profit or owner-pay target — what must actually land in YOUR account by day 90?`],
+  ['in','habit',`One money habit you will run weekly for all 13 weeks (e.g. a 30-minute CFO hour):`],
+  ['ta','why',`Why do these three targets matter more than everything else you could chase this quarter?`,3],
+  ['ta','risk',`What is most likely to knock you off course — and what is your pre-decided response?`,3]]},
+ {n:3,t:`From 90 Days to 30`,i:`Big targets fail when they stay big. Slice your 90-day targets into three monthly milestones your calendar can actually hold.`,b:[
+  ['ta','m1',`Month 1 milestone (the foundation — usually a fix, a system, or a price change):`,2],
+  ['ta','m2',`Month 2 milestone (the build — usually outreach, offers, or renegotiation):`,2],
+  ['ta','m3',`Month 3 milestone (the proof — the number that shows the plan worked):`,2],
+  ['ta','fear',`Which milestone scares you most, and what does that fear tell you to prepare for?`,3]]},
+ {n:4,t:`This Week's Money Moves`,i:`Return to this page every Monday. Three moves, one hour, no drama. Small consistent moves beat heroic monthly panics.`,b:[
+  ['ta','m1',`Money Move #1 this week (highest impact on cash):`,2],
+  ['ta','m2',`Money Move #2 this week (fixes or prevents a problem):`,2],
+  ['ta','m3',`Money Move #3 this week (builds the future — pricing, buffer, or skill):`,2],
+  ['in','check',`The number I will check on Friday to know this week worked:`]]}
+];
+const REFL=[
+ `When did money stop feeling like a tool and start feeling like a threat in your business? Describe the moment or season it shifted.`,
+ `What does your bank balance have the power to make you feel — and who or what gave it that power?`,
+ `Which money problem in your business is actually a boundary problem wearing a disguise?`,
+ `What do you pretend not to know about your numbers? Write it down, and notice what happens when it's on paper.`,
+ `Whose financial approval are you still quietly chasing with this business — and what would change if you stopped?`,
+ `What would you charge if you knew nobody would be angry, disappointed, or surprised?`,
+ `What has avoiding your numbers already cost you — honestly, in money and in sleep?`,
+ `Describe the calmest money month your business could realistically have. What is happening — and just as importantly, what has stopped happening?`,
+ `What would "boringly profitable" look like for your business? Paint the picture in detail.`,
+ `Which single problem, solved once and properly, would quietly prevent ten future ones?`,
+ `What financial decision will the you of five years from now thank you for making this quarter?`,
+ `What would you build, launch, or attempt if a slow month couldn't scare you anymore?`,
+ `What does "enough" actually mean for you — the real number, and the life it pays for?`,
+ `Write the advice you'd give another small business owner facing your exact situation. Read it back. Then take it.`
+];
+const FW=[
+ {n:1,t:`The SMART Money Goal`,i:`Vague goals produce vague bank balances. Run any money goal through these five gates before it earns a place on your calendar.`,b:[
+  ['ta','s',`S — Specific: exactly what changes, in plain words:`,3],
+  ['in','m',`M — Measurable: the number that proves it happened:`],
+  ['ta','a',`A — Achievable: why this is a stretch, not a fantasy:`,2],
+  ['ta','r',`R — Relevant: how this serves your 90-day money target:`,2],
+  ['in','t',`T — Time-bound: the date it's done, and the date you check progress:`]]},
+ {n:2,t:`The 80/20 Profit Lens`,i:`A small slice of your clients and offers produces most of your profit — and a small slice produces most of your headaches. Find both slices.`,b:[
+  ['ta','1',`Your top 20% — the clients or offers that bring most of the profit:`,2],
+  ['ta','2',`What do they have in common (who they are, how they found you, what they bought)?`,2],
+  ['ta','3',`Your bottom slice — the clients or offers that bring most of the stress per pound earned:`,2],
+  ['ta','4',`One deliberate move to get MORE of the top slice this quarter:`,2],
+  ['ta','5',`One deliberate move to shrink, reprice, or retire the bottom slice:`,2]]},
+ {n:3,t:`The Decision Matrix`,i:`When two or three options all sound reasonable, stop debating and score them. Rate each option 1–5 per criterion, total the rows, and let the math argue for you.`,b:[
+  ['in','dec',`The decision I'm scoring:`],['x','matrix'],['ta','gut',`Score each option 1–5 per column (5 = best), total the rows, and note: for "Cost", score 5 for LOW cost. Highest total wins — unless your gut protests loudly, in which case write down what your gut knows that the grid doesn't:`,5]]},
+ {n:4,t:`The Cash Crunch Triage Protocol`,i:`Keep this page for hard weeks. When cash gets tight, run these steps in order — no skipping to panic.`,b:[
+  ['ta','1',`STEP 1 — Face it: today's exact cash position and the next 14 days of bills:`,2],
+  ['ta','2',`STEP 2 — Accelerate in: who can you invoice, chase, or offer a pay-now incentive today?`,2],
+  ['ta','3',`STEP 3 — Decelerate out: which payments can be delayed or split — asked for politely and early?`,2],
+  ['ta','4',`STEP 4 — Generate: the fastest honest offer you can make to existing customers this week:`,2],
+  ['ta','5',`STEP 5 — Learn: what will you change so this exact crunch can't repeat?`,2]]},
+ {n:5,t:`The Five Whys Template`,i:`A reusable copy of the root-cause drill from Worksheet 11. Return here whenever a new problem shows up wearing a costume.`,b:[
+  ['in','p',`The problem:`],['in','1',`Why #1:`],['in','2',`Why #2:`],['in','3',`Why #3:`],['in','4',`Why #4:`],['in','5',`Why #5 — root cause:`],
+  ['ta','fix',`The fix aimed at the ROOT, not the symptom:`,3]]}
+];
+const CFO_ITEMS=[`Checked bank balance and reconciled anything odd`,`Sent every invoice for completed work`,`Chased every payment overdue by 1+ days`,`Made the Profit-First split transfers`,`Made the buffer transfer (any amount counts)`,`Reviewed the next 14 days of bills — no ambushes`,`Moved one workbook problem one step forward`,`Wrote down one number that surprised me this week`];
+
+/* ---------------- calculators (pure) ---------------- */
+function calc04(){
+  const rev=num(S.v.ws04_1),fix=num(S.v.ws04_2),vp=num(S.v.ws04_3),pay=num(S.v.ws04_4);
+  let be=null,msg='';
+  if(fix!=null&&vp!=null){ if(vp>=100)msg='Variable costs of 100% or more leave no room to cover fixed costs.'; else be=(fix+(pay||0))/(1-vp/100); }
+  return {rev,fix,vp,pay,be,msg,gap:(be!=null&&rev!=null)?rev-be:null};
+}
+function calc08(){
+  const p=['ws08_1','ws08_2','ws08_3','ws08_4'].map(k=>num(S.v[k]));
+  const any=p.some(x=>x!=null);const total=p.reduce((a,b)=>a+(b||0),0);
+  const dep=num(S.v.ws08_dep);
+  return {p,any,total,dep};
+}
+function calc09(){
+  const sv=num(S.v.ws09_1),m=num(S.v.ws09_2),h=num(S.v.ws09_3);
+  const target=(sv!=null&&m!=null)?sv*m:null;
+  return {sv,m,h,target,gap:(target!=null)?Math.max(0,target-(h||0)):null,funded:(target&&target>0)?Math.min(100,((h||0)/target)*100):null};
+}
+function debts(){
+  const d=[];for(let i=1;i<=3;i++){const l=val(`ws10_d${i}_l`).trim(),b=num(S.v[`ws10_d${i}_b`]),r=num(S.v[`ws10_d${i}_r`]),m=num(S.v[`ws10_d${i}_m`]);if(l||b!=null||r!=null||m!=null)d.push({i,l:l||('Debt #'+i),b:b||0,r:r||0,m:m||0});}
+  return d;
+}
+function calc10(){
+  const d=debts();const tb=d.reduce((a,x)=>a+x.b,0),tm=d.reduce((a,x)=>a+x.m,0);
+  const wr=tb>0?d.reduce((a,x)=>a+x.b*x.r,0)/tb:null;const mi=d.reduce((a,x)=>a+x.b*x.r/100/12,0);
+  const av=[...d].sort((a,b)=>b.r-a.r).map(x=>x.l),sb=[...d].sort((a,b)=>a.b-b.b).map(x=>x.l);
+  return {d,tb,tm,wr,mi,av,sb};
+}
+function matrixRows(){
+  return ['a','b','c'].map(k=>{const sc=['c','p','s','v'].map(c=>num(S.v[`fw03_${k}_${c}`]));const any=sc.some(x=>x!=null);return {k,name:val(`fw03_${k}_n`),sc,total:any?sc.reduce((a,b)=>a+(b||0),0):null}});
+}
+function actionStats(){let d=0,t=0;PHASES.forEach(p=>p.tasks.forEach((_,i)=>{t++;if(S.c[`a${p.n}_${i}_c`])d++}));return {d,t}}
+
+/* ---------------- page definitions ---------------- */
+const PAGES=[];
+function add(o){PAGES.push(o)}
+function head(o){
+  let h='';
+  if(o.badge)h+=`<div class="badge"><b>${String(o.badge[0]).padStart(2,'0')}</b><span>${esc(o.badge[1])}</span></div>`;
+  else if(o.eyebrow)h+=`<p class="eyebrow">${esc(o.eyebrow)}</p>`;
+  h+=`<h1 class="t ${o.small?'q':''}">${esc(o.title)}</h1><div class="rule"></div>`;
+  if(o.intro)h+=`<p class="intro">${esc(o.intro)}</p>`;
+  return h;
+}
+function blocksHtml(key,blocks,extra){
+  return blocks.map(b=>{
+    if(b[0]==='ta')return TA(`${key}_${b[1]}`,b[2],b[3]);
+    if(b[0]==='in')return IN(`${key}_${b[1]}`,b[2],b[3]);
+    if(b[0]==='x')return extra(b[1]);
+    return '';
+  }).join('');
+}
+function wsExtra(key){
+  return function(k){
+    if(k==='calc04')return `<div class="calc" data-calc="c04"></div>`;
+    if(k==='calc08')return `<div class="calc" data-calc="c08"></div>`;
+    if(k==='calc09')return `<div class="calc" data-calc="c09"></div>`;
+    if(k==='calc10')return `<div class="calc" data-calc="c10"></div>`;
+    if(/^debt\d$/.test(k)){const i=k.slice(4);
+      reg(`ws10_d${i}_l`,`Debt #${i} — lender`);reg(`ws10_d${i}_b`,`Debt #${i} — balance`);reg(`ws10_d${i}_r`,`Debt #${i} — interest rate %`);reg(`ws10_d${i}_m`,`Debt #${i} — minimum payment`);
+      return `<span class="q">Debt #${i} — lender, balance, interest rate, minimum payment:</span><div class="debt">
+        <div><label for="ws10_d${i}_l">Lender</label><input id="ws10_d${i}_l" class="f" data-k="ws10_d${i}_l" autocomplete="off"></div>
+        <div><label for="ws10_d${i}_b">Balance</label><input id="ws10_d${i}_b" class="f" data-k="ws10_d${i}_b" inputmode="decimal"></div>
+        <div><label for="ws10_d${i}_r">Rate %</label><input id="ws10_d${i}_r" class="f" data-k="ws10_d${i}_r" inputmode="decimal"></div>
+        <div><label for="ws10_d${i}_m">Min. payment</label><input id="ws10_d${i}_m" class="f" data-k="ws10_d${i}_m" inputmode="decimal"></div></div>`;}
+    if(k==='sol'){
+      let h=`<span class="q">Now list twenty possible solutions — absurd ones welcome, they loosen the good ones:</span><div id="solList">`;
+      for(let i=1;i<=20;i++){reg(`ws15_s${i}`,`Solution ${i}`);h+=`<div class="sol"><span class="no">${i}</span><input class="f" data-k="ws15_s${i}" aria-label="Solution ${i}" autocomplete="off"><button type="button" class="star" data-star="${i}" aria-label="Mark solution ${i} as a favourite">★</button></div>`;}
+      return h+`</div><div class="note" style="font-size:13px;color:var(--muted)" id="solCount"></div>`;}
+    if(k==='matrix'){
+      let h=`<table class="mx"><thead><tr><th style="width:30%">Option</th><th>Cost (1–5)</th><th>Profit impact</th><th>Speed</th><th>Fits my values</th><th>TOTAL</th></tr></thead><tbody>`;
+      ['a','b','c'].forEach(k2=>{
+        reg(`fw03_${k2}_n`,`Option ${k2.toUpperCase()}`);
+        ['c','p','s','v'].forEach((c,j)=>reg(`fw03_${k2}_${c}`,`Option ${k2.toUpperCase()} — ${['Cost','Profit impact','Speed','Fits my values'][j]}`));
+        h+=`<tr data-row="${k2}"><td><small>OPTION ${k2.toUpperCase()}</small><input class="f" data-k="fw03_${k2}_n" aria-label="Option ${k2.toUpperCase()} name"></td>`+
+          ['c','p','s','v'].map(c=>`<td><input class="f" data-k="fw03_${k2}_${c}" type="number" min="1" max="5" step="1" inputmode="numeric" style="text-align:center" aria-label="Option ${k2.toUpperCase()} score"></td>`).join('')+
+          `<td class="tot" data-tot="${k2}">—</td></tr>`;});
+      return h+`</tbody></table><div class="note" id="mxWin" style="font-weight:800;color:var(--green)"></div>`;}
+    return '';
+  };
+}
+function buildPages(){
+  // 1 cover is separate; index 0 = page 1
+  add({foot:'Cover',nav:null,skip:true,build:()=>''});
+  // 2
+  add({foot:'Title & Copyright',nav:null,rt:'Title',build:()=>`<div style="min-height:55vh;display:flex;flex-direction:column;justify-content:center;text-align:center">
+    <div class="ar" style="font-size:34px;color:var(--brown)" lang="ar">${BAS}</div>
+    <p class="eyebrow" style="letter-spacing:.3em">A MONEY MINDSET &amp; BUDGETING WORKBOOK</p>
+    <h1 class="t" style="font-size:clamp(30px,7vw,48px)">The Problem Solving Workbook</h1><div class="rule" style="margin:0 auto 18px"></div>
+    <p class="intro" style="font-size:19px">Fix the money leaks, master your numbers, and build a calmly profitable small business</p>
+    <p style="color:var(--soft);font-size:13px;margin-top:60px">© 2026 · All rights reserved. For personal use by the purchaser only.<br>This workbook offers educational prompts and frameworks only and is not financial, tax, or accounting advice.<br>Please consult a qualified professional for decisions specific to your business.</p>
+    <p style="color:var(--soft);font-size:13px">Developed by Zaid Adib Ansari and the Balanced Middle Path Academy in conjunction with the Creed to Commerce Framework.</p></div>`});
+  // 3 TOC
+  add({foot:'Index',nav:null,rt:'Contents',build:()=>head({eyebrow:'Your map',title:'Table of Contents',intro:'Every card below is tappable. Jump straight to any section — and use the pill bar at the top of every page to move around the workbook.'})+
+    [[1,'Welcome & How To Use This Workbook',4],[2,'Money Mindset Self-Assessment',6],[3,'Goal Setting Worksheets',10],[4,'Core Problem-Solving Worksheets',14],[5,'Reflection Prompts',32],[6,'Action Plan & Checklists',46],[7,'Frameworks & Templates',50],[8,'Bonus Resources',56],[9,'Final Review & Next Steps',58],[10,'Notes',60]]
+    .map(r=>`<button class="toc" data-go="${r[2]}"><span class="n">${String(r[0]).padStart(2,'0')}</span><span class="tt">${esc(r[1])}<span class="mini"><i data-sec="${r[0]}"></i></span><small data-secl="${r[0]}"></small></span><span class="pp">p. ${r[2]}</span></button>`).join('')});
+  // 4 welcome
+  add({foot:'Welcome',nav:'welcome',rt:'Welcome',build:()=>head({eyebrow:'Section 01',title:'Welcome — Read This First',intro:`You didn't start your business to spend your evenings worrying about money. Yet here we are: the balance-checking dread, the underpricing, the invoice you still haven't sent. This workbook exists to end that pattern.`})+
+    `<p class="lead">Here's the truth most business advice skips: your money problems are rarely maths problems. They're a tangle of habits, beliefs, and missing systems — and each one can be untangled with the right questions asked in the right order. That's what the pages ahead do. This is a working document, not a reading document. You'll assess where you actually stand, set targets you can feel, run eighteen problem-solving worksheets that move real numbers, and finish with a 30-day action plan and a set of reusable frameworks you'll return to for years.</p>
+    <p class="lead">Who this is for: the owner doing their own books (or avoiding them), the freelancer who flinches before quoting a price, the shopkeeper whose strong months vanish into weak ones, the service provider who is busy but somehow never paid. If money in your business feels louder than it should, you're in the right place.</p>`+
+    CALL('Quick-start — four rules for getting your money\'s worth',`1) Write real numbers, even ugly ones — approximation is allowed, avoidance is not. 2) Do the quiz before anything else; it tells you which worksheets to prioritise. 3) One worksheet per sitting beats ten in a burst — this is training, not bingeing. 4) Book your Weekly CFO Hour (Worksheet 18) in your calendar today, before life objects.`)});
+  // 5 how to use
+  add({foot:'Welcome',nav:'welcome',rt:'How To Use This Workbook',build:()=>head({eyebrow:'Section 01',title:'How To Use This Workbook',intro:'Three ways to work through these pages — pick whichever fits your life, or mix all three.'})+
+    CARD('On a phone or tablet',`Tap any line and type, or use your device's dictation. Your answers save automatically on this device, and the navigation pills and Prev/Next buttons are built as large tap targets. Add the app to your home screen to open it like any other app.`)+
+    CARD('On a computer',`Type directly into every field — every line, box, checkbox and score in this workbook is live and editable. Your answers save as you type, and the calculators do the arithmetic for you.`)+
+    CARD('In print or as a PDF',`Use Tools → Print to print the whole workbook (filled or blank) in portrait, or Build PDF Report to produce a clean, branded report of your answers. Empty fields print as clean lined writing areas.`)+
+    `<p class="q" style="font-size:18px;margin-top:26px">Your suggested route through the workbook:</p><ul class="list"><li>1. Take the Money Mindset Self-Assessment — ten honest minutes.</li><li>2. Set your Money Vision and 90-day targets in the Goal section.</li><li>3. Work the eighteen core worksheets in order — they build on each other.</li><li>4. Visit one Reflection Prompt whenever a worksheet stirs something up.</li><li>5. Run the 30-day Action Plan, ticking real boxes as you go.</li><li>6. Keep the Frameworks section bookmarked for every future problem.</li></ul>`+
+    IL('w_name','Your name:')+IL('w_date','Date you began:',{type:'date',cls:'sm'})+IL('w_why','One sentence on why you opened this workbook:')});
+  // 6 quiz intro
+  add({foot:'Self-Assessment',nav:'quiz',rt:'Self-Assessment',build:()=>head({eyebrow:'Section 02',title:'The Money Mindset Self-Assessment',intro:`Ten statements. For each, tick the box that matches your honest, average behaviour — not your best week. Nobody grades this but you, and the score at the end tells you exactly which worksheets deserve your attention first.`})+
+    CALL('How to score',`Never = 0 points · Sometimes = 1 point · Often = 2 points · Always = 3 points. Tick one box per statement, tally your total on the scoring page, then read your profile. Retake this quiz on day 30 — watching the score drop is one of the quiet pleasures of this workbook.`)+
+    `<p class="q" style="font-size:18px">Before you start, capture your gut feeling:</p><p class="intro" style="margin-bottom:0">Right now, on a scale of 1–10, how in control of your business finances do you FEEL?</p>`+IL('q_gut','My gut number:',{type:'number',cls:'sm',im:'numeric'})+
+    `<p class="intro" style="margin-bottom:0">And in one line, what do you HOPE this assessment reveals?</p><input id="q_hope" class="f" data-k="q_hope" aria-label="What I hope this assessment reveals" autocomplete="off">`+(reg('q_hope','What I hope this assessment reveals'),'')});
+  // 7, 8 quiz statements
+  [[0,5,'Statements 1–5'],[5,10,'Statements 6–10']].forEach(([a,b,tt])=>{
+    add({foot:'Self-Assessment',nav:'quiz',rt:tt,quiz:true,build:()=>head({eyebrow:'Section 02',title:tt})+QS.slice(a,b).map((s,j)=>{const i=a+j+1;reg('q'+i,'Statement '+i+': '+s,'radio');
+      return `<div class="stmt"><div class="no">${String(i).padStart(2,'0')}</div><div style="flex:1"><div class="tx">${esc(s)}</div><div class="opts" role="radiogroup" aria-label="Statement ${i}">${OPT.map((o,k)=>`<label><input type="radio" name="q${i}" data-k="q${i}" value="${k}"> ${o}</label>`).join('')}</div></div></div>`}).join('')+`<div class="calc" data-calc="qlive"></div>`});
+  });
+  // 9 quiz score
+  add({foot:'Self-Assessment',nav:'quiz',rt:'Your Score',quiz:true,build:()=>head({eyebrow:'Section 02',title:'Your Score & What It Means'})+
+    `<div class="il"><label for="q_total">My total score (out of 30):</label><input id="q_total" class="f sm" data-k="q_total" inputmode="numeric" style="font-size:22px;font-weight:800;color:var(--brown)"></div>`+(reg('q_total','My total score (out of 30)'),'')+
+    PROFILES.map((p,i)=>`<div class="card" data-prof="${i}"><h3>${p.lo}–${p.hi} · ${esc(p.t)}</h3><p>${esc(p.x)}</p><div>${p.go.map(g=>`<a class="chip" href="#p=${g[0]}" data-go="${g[0]}">${esc(g[1])} → p.${g[0]}</a>`).join('')}</div></div>`).join('')+
+    `<div class="btnrow noprint"><button class="btn fill" id="btnLock">Lock this as my Day-1 score</button><button class="btn" id="btnRetake">Start my Day-30 retake</button></div><p id="baseNote" class="intro"></p>`+
+    `<div class="il"><label for="q_stung_n">The statement that stung the most was number</label><input id="q_stung_n" class="f sm" data-k="q_stung_n" type="number" min="1" max="10" style="max-width:90px;flex:0 0 90px"><span style="font-weight:800;color:var(--muted)">, because:</span></div>`+(reg('q_stung_n','The statement that stung the most was number'),'')+
+    `<textarea id="q_stung_why" class="f" data-k="q_stung_why" rows="4" aria-label="Because"></textarea>`+(reg('q_stung_why','…because'),'')});
+  // 10-13 goals
+  GOALS.forEach(g=>add({foot:'Goal Setting',nav:'goals',rt:`Goal ${g.n} — ${g.t}`,build:()=>head({badge:[g.n,'Goal'],title:g.t,intro:g.i})+blocksHtml('g'+g.n,g.b,()=>'')+QUOTE('Direction first. Effort second.')}));
+  // 14-31 worksheets
+  WS.forEach(w=>{const key='ws'+String(w.n).padStart(2,'0');add({foot:'Core Worksheets',nav:'worksheets',rt:`Worksheet ${String(w.n).padStart(2,'0')} — ${w.t}`,key,extra:w.n,build:()=>head({badge:[w.n,'Worksheet'],title:w.t,intro:w.i})+blocksHtml(key,w.b,wsExtra(key))+QUOTE(w.q)})});
+  // 32-45 reflections
+  REFL.forEach((q,i)=>add({foot:'Reflection Prompts',nav:'reflect',rt:`Reflection ${String(i+1).padStart(2,'0')}`,build:()=>`<p class="eyebrow">${i<7?'Looking inward':'Looking forward'} · Reflection ${String(i+1).padStart(2,'0')} of 14</p><h1 class="t q">${esc(q)}</h1><div class="rule"></div>`+
+    (reg('r'+String(i+1).padStart(2,'0'),q),`<textarea id="r${String(i+1).padStart(2,'0')}" class="f big-ta" data-k="r${String(i+1).padStart(2,'0')}" rows="16" aria-label="${esc(q)}" style="min-height:52vh"></textarea>`)+
+    `<p class="quote" style="color:var(--soft);font-size:15px;margin-top:14px">Write until it surprises you — the useful answer is usually two paragraphs past the polite one.</p>`}));
+  // 46 action intro
+  add({foot:'Action Plan',nav:'action',rt:'The 30-Day Action Plan',action:true,build:()=>head({eyebrow:'Section 06',title:'The 30-Day Action Plan',intro:`Insight without action is just expensive entertainment. This plan converts everything you've written so far into thirty days of small, real, tickable moves — three phases, ten days each.`})+
+    PHASES.map(p=>CARD(`Days ${p.days.replace('Days ','').replace(' to ','–')} · ${p.name.toUpperCase()}`,p.why.split('—')[0].replace(/^You cannot think clearly about growth while standing in a leak\. These first ten days /,'').length?({1:'Stop the bleeding: invoices out, leaks plugged, numbers faced. You cannot plan clearly while standing in a leak.',2:'Build the machinery — splits, transfers, terms, and rituals — so the problems you just fixed lose their way back in.',3:'Turn habits into identity: hold the hard conversation, run the experiment, review the targets, and celebrate on purpose.'})[p.n]:'')).join('')+
+    `<div class="il"><label for="a_d1">My Day 1 is (date):</label><input id="a_d1" class="f sm" data-k="a_d1" type="date"><label for="a_d30">My Day 30 is (date):</label><input id="a_d30" class="f sm" data-k="a_d30" type="date"></div>`+(reg('a_d1','My Day 1 is (date)'),reg('a_d30','My Day 30 is (date)'),'')+
+    `<div class="calc" data-calc="cact"></div>`+TA('a_acc',`My accountability move (who I'll tell, or where I'll post my Day 30 result):`,3)});
+  // 47-49 phases
+  PHASES.forEach(p=>add({foot:'Action Plan',nav:'action',rt:`${p.name} — ${p.days}`,phase:p.n,action:true,build:()=>head({eyebrow:`Phase ${p.n} of 3`,title:`${p.name} — ${p.days}`})+CALL('Why this matters',p.why)+
+    p.tasks.map((t,i)=>{const id=`a${p.n}_${i}`;reg(id+'_c',`${i+1}. ${t}`,'check');reg(id+'_d',`${i+1}. By when?`);reg(id+'_s',`${i+1}. First tiny step`);
+      return `<div class="task" data-task="${id}"><div class="row1"><input type="checkbox" class="chk" id="${id}_c" data-k="${id}_c" aria-label="Done: ${esc(t)}"><label class="tt" for="${id}_c">${i+1}. ${esc(t)}</label></div><div class="row2"><div><label for="${id}_d">By when?</label><input id="${id}_d" class="f" data-k="${id}_d" type="date"></div><div><label for="${id}_s">First tiny step:</label><input id="${id}_s" class="f" data-k="${id}_s" autocomplete="off"></div></div></div>`}).join('')+`<div class="calc" data-calc="cphase" data-ph="${p.n}"></div>`}));
+  // 50-54 frameworks
+  FW.forEach(f=>{const key='fw'+String(f.n).padStart(2,'0');add({foot:'Frameworks & Templates',nav:'frameworks',rt:`Framework ${String(f.n).padStart(2,'0')} — ${f.t}`,key,build:()=>head({badge:[f.n,'Framework'],title:f.t,intro:f.i})+blocksHtml(key,f.b,wsExtra(key))+QUOTE('Frameworks turn one solution into a habit.')})});
+  // 55 CFO checklist
+  add({foot:'Frameworks & Templates',nav:'frameworks',rt:'Framework 06 — The Weekly CFO Hour Checklist',cfo:true,build:()=>head({badge:[6,'Framework'],title:'The Weekly CFO Hour Checklist',intro:'Photocopy-worthy. Tick through this every week during your protected hour, and jot what you noticed.'})+
+    `<div class="il"><label for="cfo_week">Week of:</label><input id="cfo_week" class="f sm" data-k="cfo_week" type="date"><label for="cfo_cash">Cash position today:</label><input id="cfo_cash" class="f sm" data-k="cfo_cash" inputmode="decimal"></div>`+(reg('cfo_week','Week of'),reg('cfo_cash','Cash position today'),'')+
+    CFO_ITEMS.map((t,i)=>{reg('cfo_c'+(i+1),t,'check');return `<div class="cl"><input type="checkbox" class="chk" id="cfo_c${i+1}" data-k="cfo_c${i+1}"><label for="cfo_c${i+1}">${esc(t)}</label></div>`}).join('')+
+    TA('cfo_note','What I noticed this week (one honest paragraph):',5)+
+    `<div class="btnrow noprint"><button class="btn green" id="cfoSave">Save this week to my log &amp; start a fresh checklist</button></div><div id="cfoLog"></div>`+QUOTE('One honest hour a week outworks a month of worry.')});
+  // 56 bookshelf
+  add({foot:'Bonus Resources',nav:'bonus',rt:'Bonus Resources — The Bookshelf',build:()=>head({eyebrow:'Section 08',title:'Bonus Resources — The Bookshelf',intro:'Five books that go deeper on the ideas in this workbook. Read them slowly, one at a time, with a highlighter and your Weekly CFO Hour standing by.'})+
+    BOOKS.map((b,i)=>{reg('bk_s'+(i+1),`${b[0]} — reading status`);return `<div class="card"><h3>${esc(b[0])} — ${esc(b[1])}</h3><p>${esc(b[2])}</p><select class="f" data-k="bk_s${i+1}" style="margin-top:10px;max-width:220px" aria-label="Reading status for ${esc(b[0])}"><option value="">Reading status…</option><option>To read</option><option>Reading now</option><option>Finished</option></select></div>`}).join('')+
+    TA('bk_first',`The first book I'll read, and the date I'll start:`,2)});
+  // 57 toolkit
+  add({foot:'Bonus Resources',nav:'bonus',rt:'The Toolkit & Your Next Steps',build:()=>head({eyebrow:'Section 08',title:'The Toolkit & Your Next Steps',intro:`Five practical set-ups that make everything in this workbook easier to sustain — plus space for the creator's links and your notes.`})+
+    `<ul class="list"><li>A genuinely separate business bank account — the single highest-leverage 20-minute fix in this book.</li><li>Cloud accounting software with automatic bank feeds, so your CFO Hour reviews numbers instead of typing them.</li><li>Invoice automation with built-in late-payment reminders — your boundary script, sent by a robot with no feelings.</li><li>A recurring calendar block for the Weekly CFO Hour, marked busy, defended like a client meeting.</li><li>A one-page dashboard (even paper) tracking four numbers: cash today, owed to you, owed by you, and this month's sales.</li></ul>`+
+    CALL('From the creator',`Thank you for working through this workbook. If it helped you, the kindest things you can do are: leave a review where you bought it, and pass the recommendation to one fellow business owner who's carrying money stress alone.`)+
+    IL('tk_site','Creator website / store:')+IL('tk_comm','Community / newsletter:')+IL('tk_mail','Contact / support email:',{type:'email'})+TA('tk_other',`Other resources I've found (podcasts, mentors, communities):`,5)});
+  // 58 final review
+  add({foot:'Final Review',nav:null,rt:'The Final Review',final:true,build:()=>head({eyebrow:'Section 09',title:`The Final Review — Look How Far You've Come`,intro:`You opened this workbook with a knot of vague money stress. You're closing it with named problems, real numbers, working systems, and a plan. Take ten minutes to make the progress visible — visible progress is what keeps compounding.`})+
+    `<span class="q">My self-assessment score at the start was <input class="f" data-k="f_start" id="f_start" style="width:80px;display:inline-block;text-align:center" inputmode="numeric" aria-label="Starting score"> and today it is <input class="f" data-k="f_today" id="f_today" style="width:80px;display:inline-block;text-align:center" inputmode="numeric" aria-label="Score today">. The biggest change behind that shift:</span>`+(reg('f_start','Self-assessment score at the start'),reg('f_today','Self-assessment score today'),'')+
+    `<textarea id="f_1" class="f" data-k="f_1" rows="4" aria-label="The biggest change behind that shift"></textarea>`+(reg('f_1','The biggest change behind that shift'),'')+
+    `<div class="btnrow noprint"><button class="btn" id="btnPull">Pull my scores from the quiz</button></div>`+
+    TA('f_2','The single most valuable page in this workbook for me was ________, because:',4)+IN('f_3','A number in my business that has already moved (or is about to):')+TA('f_4','The belief about money I walked in with — and the one I\'m walking out with:',4)+TA('f_5',`The problem I solved that I'm most quietly proud of:`,2)});
+  // 59 next steps
+  add({foot:'Next Steps',nav:null,rt:`What's Next — Your 30-Day Continuation Plan`,build:()=>head({eyebrow:'Section 09',title:`What's Next — Your 30-Day Continuation Plan`,intro:'Momentum is a perishable asset. Before you close this workbook, decide exactly what the next thirty days protect.'})+
+    TA('n_w1',`Week 1 — The habit I'm protecting no matter what:`,2)+TA('n_w2',`Week 2 — The number I'm improving, from ____ to ____:`,2)+TA('n_w3',`Week 3 — The conversation, decision, or experiment I'm completing:`,2)+TA('n_w4',`Week 4 — How I'll review the month and reset the next 90-day target:`,2)+
+    IN('n_retake',`The date I'll retake the self-assessment quiz:`,{type:'date'})+TA('n_drift',`If I drift, the first small move that restarts me is:`,2)+
+    CALL('A last word',`Problems will keep arriving — that's not failure, that's business. What's different now is you: you own a method, a weekly hour, and a shelf of frameworks. The next problem doesn't stand a chance.`)});
+  // 60-61 notes
+  [1,2].forEach(n=>add({foot:'Notes',nav:null,rt:`Working Notes — Page ${n}`,build:()=>head({eyebrow:'Notes',title:`Working Notes — Page ${n}`,intro:'Overflow space for calculations, drafts of hard messages, and ideas that arrive mid-worksheet.'})+
+    (reg('note'+n,`Working Notes — Page ${n}`),`<textarea id="note${n}" class="f" data-k="note${n}" rows="22" aria-label="Working notes page ${n}" style="min-height:60vh"></textarea>`)}));
+  // render
+  PAGES.forEach((p,i)=>{CUR=i;p.html=p.build();});
+}
+
+/* section groups for progress (page numbers, 1-based) */
+const SECS=[[1,4,5],[2,6,9],[3,10,13],[4,14,31],[5,32,45],[6,46,49],[7,50,55],[8,56,57],[9,58,59],[10,60,61]];
+const SECNAMES=['Welcome','Self-Assessment','Goals','Core Worksheets','Reflection Prompts','Action Plan','Frameworks','Bonus','Final Review & Next Steps','Notes'];
+function secProgress(s){const [,a,b]=SECS[s-1];const fs=FIELDS.filter(f=>f.page+1>=a&&f.page+1<=b);const d=fs.filter(filled).length;return {d,t:fs.length}}
+function overall(){const t=FIELDS.length,d=FIELDS.filter(filled).length;return {d,t,p:t?Math.round(d/t*100):0}}
+
+/* ---------------- navigation ---------------- */
+const NAVS=[['welcome','Welcome',4],['quiz','Quiz',6],['goals','Goals',10],['worksheets','Worksheets',14],['reflect','Reflect',32],['action','Action',46],['frameworks','Frameworks',50],['bonus','Bonus',56]];
+let cur=3; // zero-based index; page 4 default
+function buildPills(){$('#pills').innerHTML=NAVS.map(n=>`<button class="pill" data-nav="${n[0]}" data-go="${n[2]}">${n[1]}</button>`).join('')}
+function buildJump(){$('#jump').innerHTML=PAGES.map((p,i)=>i===0?'':`<option value="${i+1}">${i+1} · ${esc(p.rt||p.foot)}</option>`).join('')}
+function ccFooter(i){return `<footer class="pf"><span>The Problem Solving Workbook</span><span>${esc(PAGES[i].foot)}</span><span>Page ${i+1} of ${TOTAL}</span></footer><div class="ccf"><b>Creed to Commerce™</b> · The Balanced Middle Path Academy, LLC</div>`}
+function pageTools(i){const p=PAGES[i];const has=FIELDS.some(f=>f.page===i);return `<div class="pagetools noprint">${has?`<button class="btn" data-act="clearpage">Clear this page</button>`:''}<button class="btn" data-act="printpage">Print this page</button><button class="btn" data-act="report">PDF report</button></div>`}
+function go(n,noScroll){
+  n=Math.max(2,Math.min(TOTAL,n));cur=n-1;S.meta.page=cur;save();
+  const p=PAGES[cur];const v=$('#pageView');
+  v.innerHTML=`<section class="pg" data-page="${n}">${p.html}${pageTools(cur)}${ccFooter(cur)}</section>`;
+  hydrate(v);initPage(v,cur);
+  $$('.pill').forEach(b=>b.classList.toggle('on',b.dataset.nav===p.nav));
+  $('#jump').value=String(n);
+  $('#prev').disabled=n<=2;$('#next').disabled=n>=TOTAL;
+  document.title=`${p.rt||p.foot} · Problem Solving Workbook`;
+  if(!noScroll)window.scrollTo({top:0,behavior:'instant'in window?'instant':'auto'});
+  try{history.replaceState(null,'','#p='+n)}catch(e){}
+  updateProgress();
+}
+function showCover(){$('#cover').style.display='flex';['#topChrome','#main','#bottomBar'].forEach(s=>$(s).style.display='none');window.scrollTo(0,0)}
+function showApp(){$('#cover').style.display='none';$('#topChrome').style.display='block';$('#main').style.display='block';$('#bottomBar').style.display='block'}
+
+/* ---------------- hydrate + events ---------------- */
+function hydrate(root){
+  $$('[data-k]',root).forEach(el=>{
+    const k=el.dataset.k;
+    if(el.type==='checkbox')el.checked=!!S.c[k];
+    else if(el.type==='radio')el.checked=(val(k)!==''&&String(el.value)===val(k));
+    else el.value=val(k);
+  });
+  $$('textarea.f',root).forEach(grow);
+}
+function grow(t){if(t.classList.contains('big-ta'))return;t.style.height='auto';t.style.height=Math.max(t.scrollHeight+2,46)+'px'}
+function setVal(k,v,silent){if(v===''||v==null)delete S.v[k];else S.v[k]=v;if(!silent)save()}
+document.addEventListener('input',e=>{
+  const el=e.target;if(!el.dataset||!el.dataset.k)return;
+  const k=el.dataset.k;
+  if(el.type==='checkbox')return;
+  if(el.type==='radio')return;
+  setVal(k,el.value);
+  if(el.tagName==='TEXTAREA')grow(el);
+  afterChange(k,el);
+});
+document.addEventListener('change',e=>{
+  const el=e.target;if(!el.dataset||!el.dataset.k)return;
+  const k=el.dataset.k;
+  if(el.type==='checkbox'){if(el.checked)S.c[k]=true;else delete S.c[k];save();afterChange(k,el);}
+  else if(el.type==='radio'){setVal(k,el.value);afterChange(k,el);}
+  else if(el.tagName==='SELECT'){setVal(k,el.value);afterChange(k,el);}
+});
+function afterChange(k,el){
+  const root=$('#pageView');
+  if(/^q\d+$/.test(k)){
+    const {t}=quizScore();setVal('q_total',String(t));const qt=$('#q_total');if(qt)qt.value=String(t);
+  }
+  if(k==='a_d1'){const d=val('a_d1');if(d&&!val('a_d30')){setVal('a_d30',addDays(d,29));const e2=$('#a_d30');if(e2)e2.value=val('a_d30')}}
+  if(k.startsWith('ws04_')&&k!=='ws04_5'&&k!=='ws04_6'){const c=calc04();if(c.be!=null){setVal('ws04_5',String(Math.round(c.be)));const e2=$('#ws04_5');if(e2)e2.value=val('ws04_5')}}
+  if(k==='fw03_dec'||/^fw03_/.test(k)){}
+  renderCalcs(root);updateProgress();
+}
+function updateProgress(){
+  const o=overall();$('#progTxt').textContent=o.p+'%';$('#progBar').style.width=o.p+'%';
+  $$('[data-sec]').forEach(i=>{const s=+i.dataset.sec;const p=secProgress(s);i.style.width=(p.t?Math.round(p.d/p.t*100):0)+'%';const l=$(`[data-secl="${s}"]`);if(l)l.textContent=`${p.d} of ${p.t} fields completed`});
+}
+
+/* ---------------- calc rendering ---------------- */
+function row(l,v,c){return `<div class="r"><span>${l}</span><b class="${c||''}">${v}</b></div>`}
+function renderCalcs(root){
+  $$('[data-calc]',root).forEach(el=>{
+    const t=el.dataset.calc;let h='';
+    if(t==='c04'){const c=calc04();h=`<h4>Live calculation</h4>`;
+      if(c.msg)h+=`<div class="note bad">${c.msg}</div>`;
+      else if(c.be==null)h+=`<div class="note">Enter fixed costs and your variable-cost % to calculate your break-even.</div>`;
+      else{h+=row('Break-even revenue / month',money(c.be));
+        if(c.rev!=null){h+=row('Your average revenue',money(c.rev));h+=row(c.gap>=0?'Cushion above break-even':'Shortfall below break-even',money(Math.abs(c.gap)),c.gap>=0?'good':'bad');h+=row('Revenue as % of break-even',pct(c.rev/c.be*100),c.gap>=0?'good':'warn');}
+        h+=`<div class="note">Break-even = (fixed costs + your pay) ÷ (1 − variable cost %). The break-even field above is filled in for you and stays editable.</div>`;}
+    }
+    if(t==='c08'){const c=calc08();const tot=c.total;
+      h=`<h4>Live allocation check</h4><div class="meter ${tot>100?'over':''}"><i style="width:${Math.min(100,tot)}%"></i></div>`+row('Total allocated',pct(tot),tot===100?'good':(tot>100?'bad':'warn'));
+      if(c.any&&tot!==100)h+=`<div class="note ${tot>100?'bad':'warn'}">${tot>100?`Over by ${pct(tot-100)} — trim a slice.`:`${pct(100-tot)} unallocated. Operating Expenses can take the remainder.`}</div>`;
+      if(c.any&&tot===100)h+=`<div class="note good">Perfect — 100% of every deposit has a job.</div>`;
+      h+=`<div class="r"><span>Try it on a deposit of</span><span><input class="f" data-k="ws08_dep" id="ws08_dep" inputmode="decimal" style="width:130px;padding:5px 8px" placeholder="e.g. 10000" aria-label="Sample deposit amount"></span></div>`;
+      if(c.dep!=null){['Profit','Owner\'s Pay','Tax','Operating Expenses'].forEach((n,i)=>{h+=row(n,money(c.dep*(c.p[i]||0)/100))});}
+    }
+    if(t==='c09'){const c=calc09();h=`<h4>Live buffer check</h4>`;
+      if(c.target==null)h+=`<div class="note">Enter your survival number and target months.</div>`;
+      else{h+=row('Buffer target',money(c.target))+row('Held today',money(c.h||0))+row('Still to build',money(c.gap),c.gap>0?'warn':'good')+`<div class="meter"><i style="width:${c.funded||0}%"></i></div>`+row('Funded',pct(c.funded),c.funded>=100?'good':'');}
+    }
+    if(t==='c10'){const c=calc10();h=`<h4>Live debt summary</h4>`;
+      if(!c.d.length)h+=`<div class="note">Enter at least one debt above.</div>`;
+      else{h+=row('Total balance',money(c.tb))+row('Total minimum payments / month',money(c.tm))+row('Weighted average rate',pct(c.wr))+row('Interest cost / month (approx.)',money(c.mi),'warn')+
+        `<div class="note"><b>Highest-rate first (saves most interest):</b> ${c.av.map(esc).join(' → ')}<br><b>Smallest-balance first (fastest momentum):</b> ${c.sb.map(esc).join(' → ')}</div>`;}
+    }
+    if(t==='qlive'){const {t:tt,n}=quizScore();const p=profileOf(tt);h=`<h4>Progress</h4>`+row('Answered',`${n} of 10`)+row('Running score',`${tt} / 30`)+(n===10?row('Your profile',esc(p.t),'good'):'');}
+    if(t==='cact'){const a=actionStats();const d1=val('a_d1');let day='';
+      if(d1){const diff=Math.floor((new Date(new Date().toISOString().slice(0,10)+'T00:00:00')-new Date(d1+'T00:00:00'))/86400000)+1;day=diff<1?`Starts in ${1-diff} day(s)`:(diff>30?`Day 30 passed ${diff-30} day(s) ago`:`Today is Day ${diff} of 30`);}
+      h=`<h4>Your 30 days</h4>`+row('Moves completed',`${a.d} of ${a.t}`,a.d===a.t?'good':'')+`<div class="meter"><i style="width:${a.t?a.d/a.t*100:0}%"></i></div>`+(day?row('Where you are',day):'')+PHASES.map(p=>{const d=p.tasks.filter((_,i)=>S.c[`a${p.n}_${i}_c`]).length;return row(`Phase ${p.n} · ${p.name}`,`${d} / 6`)}).join('');}
+    if(t==='cphase'){const p=PHASES[+el.dataset.ph-1];const d=p.tasks.filter((_,i)=>S.c[`a${p.n}_${i}_c`]).length;h=`<h4>${p.name} progress</h4><div class="meter"><i style="width:${d/6*100}%"></i></div>`+row('Completed',`${d} of 6`,d===6?'good':'');$$('.task',root).forEach(tk=>tk.classList.toggle('done',!!S.c[tk.dataset.task+'_c']));}
+    // preserve focus on inline input
+    const focusId=document.activeElement&&document.activeElement.id;
+    const selStart=document.activeElement&&document.activeElement.selectionStart;
+    if(el.innerHTML!==h){el.innerHTML=h;const dep=$('#ws08_dep',el);if(dep)dep.value=val('ws08_dep');if(focusId==='ws08_dep'){const d2=$('#ws08_dep');if(d2){d2.focus();try{d2.setSelectionRange(selStart,selStart)}catch(e){}}}}
+  });
+  // quiz profile highlight
+  const qs=quizScore();const pi=PROFILES.indexOf(profileOf(qs.t));
+  $$('[data-prof]',root).forEach(c=>c.classList.toggle('hi',qs.n>0&&+c.dataset.prof===pi));
+  const bn=$('#baseNote',root);if(bn)bn.textContent=S.meta.base!=null?`Your locked Day-1 score is ${S.meta.base} / 30. Current score: ${qs.t} / 30.`:'Tip: lock this score as your Day-1 baseline so you can see the change after your Day-30 retake.';
+  // matrix
+  const rows=matrixRows();let best=-1;rows.forEach(r=>{if(r.total!=null&&r.total>best)best=r.total});
+  rows.forEach(r=>{const td=$(`[data-tot="${r.k}"]`,root);if(td)td.textContent=r.total==null?'—':r.total;const tr=$(`tr[data-row="${r.k}"]`,root);if(tr)tr.classList.toggle('win',r.total!=null&&r.total===best&&best>0)});
+  const mw=$('#mxWin',root);if(mw){const w=rows.filter(r=>r.total===best&&best>0);mw.textContent=w.length?(w.length>1?`Tie at ${best}: `+w.map(r=>r.name||('Option '+r.k.toUpperCase())).join(' & ')+' — let your gut break the tie.':`Highest total: ${w[0].name||('Option '+w[0].k.toUpperCase())} (${best})`):''}
+  // stars
+  $$('[data-star]',root).forEach(b=>b.classList.toggle('on',!!S.c['ws15_f'+b.dataset.star]));
+  const sc=$('#solCount',root);if(sc){const n=[...Array(20)].filter((_,i)=>val('ws15_s'+(i+1)).trim()).length;const st=Object.keys(S.c).filter(k=>/^ws15_f/.test(k)&&S.c[k]).length;sc.textContent=`${n} of 20 ideas written · ${st} of 3 favourites starred`}
+  // cfo log
+  const lg=$('#cfoLog',root);if(lg){lg.innerHTML=S.log.length?`<h3 style="color:var(--brown);margin-top:24px">My weekly log</h3>`+S.log.map((l,i)=>`<div class="logitem"><div><b>Week of ${esc(fmtDate(l.week)||'—')}</b> · ${l.done}/${l.total} ticked${l.cash?` · cash ${esc(l.cash)}`:''}<small>${esc(l.note||'')}</small></div><button class="btn sm danger noprint" data-logdel="${i}">Delete</button></div>`).join(''):''}
+}
+function initPage(root,i){renderCalcs(root);}
+
+/* ---------------- delegated clicks ---------------- */
+document.addEventListener('click',e=>{
+  const t=e.target.closest('button,a,[data-go]');if(!t)return;
+  if(t.dataset.go){e.preventDefault();showApp();go(+t.dataset.go);return}
+  if(t.id==='btnLock'){const qs=quizScore();if(qs.n<10){toast(`Answer all 10 statements first (${qs.n} done).`);return}S.meta.base=qs.t;saveNow();renderCalcs($('#pageView'));toast(`Day-1 score locked: ${qs.t} / 30`);return}
+  if(t.id==='btnRetake'){const qs=quizScore();if(S.meta.base==null){if(qs.n<10){toast('Finish and lock your first score before retaking.');return}S.meta.base=qs.t}
+    if(!confirm('Start the Day-30 retake? Your Day-1 score stays saved; the 10 answers are cleared so you can answer again.'))return;
+    for(let i=1;i<=10;i++)delete S.v['q'+i];delete S.v.q_total;saveNow();go(7);toast('Retake started — answer all 10 again.');return}
+  if(t.id==='btnPull'){const qs=quizScore();const b=S.meta.base!=null?S.meta.base:null;
+    if(b!=null)setVal('f_start',String(b));if(qs.n===10)setVal('f_today',String(qs.t));else if(b==null&&val('q_total'))setVal('f_start',val('q_total'));
+    hydrate($('#pageView'));updateProgress();toast('Scores pulled in — edit them if needed.');return}
+  if(t.dataset.star){const k='ws15_f'+t.dataset.star;if(S.c[k])delete S.c[k];else{const n=Object.keys(S.c).filter(x=>/^ws15_f/.test(x)&&S.c[x]).length;if(n>=3){toast('You can star three favourites. Un-star one first.');return}S.c[k]=true}save();renderCalcs($('#pageView'));return}
+  if(t.id==='cfoSave'){
+    const done=CFO_ITEMS.filter((_,i)=>S.c['cfo_c'+(i+1)]).length;
+    if(!done&&!val('cfo_note').trim()&&!val('cfo_week')){toast('Tick something or add a note first.');return}
+    S.log.unshift({week:val('cfo_week'),cash:val('cfo_cash'),done,total:CFO_ITEMS.length,note:val('cfo_note'),at:Date.now()});
+    ['cfo_week','cfo_cash','cfo_note'].forEach(k=>delete S.v[k]);CFO_ITEMS.forEach((_,i)=>delete S.c['cfo_c'+(i+1)]);saveNow();hydrate($('#pageView'));renderCalcs($('#pageView'));updateProgress();toast('Week saved to your log.');return}
+  if(t.dataset.logdel!==undefined){S.log.splice(+t.dataset.logdel,1);saveNow();renderCalcs($('#pageView'));return}
+  if(t.dataset.act){action(t.dataset.act);return}
+});
+$('#btnBegin').onclick=()=>{showApp();go(3);};
+$('#btnResume').onclick=()=>{showApp();go((S.meta.page||3)+1);};
+$('#prev').onclick=()=>go(cur);
+$('#next').onclick=()=>go(cur+2);
+$('#jump').onchange=e=>go(+e.target.value);
+$('#btnMenu').onclick=()=>toggleDrawer(true);
+$('#btnReport').onclick=()=>openReport();
+$('#veil').onclick=()=>{toggleDrawer(false);$('#helpModal').classList.remove('on')};
+$('#helpClose').onclick=()=>{$('#veil').classList.remove('on');$('#helpModal').classList.remove('on')};
+function toggleDrawer(on){$('#drawer').classList.toggle('on',on);$('#veil').classList.toggle('on',on)}
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){toggleDrawer(false);$('#helpModal').classList.remove('on');$('#veil').classList.remove('on')}
+  if(['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName))return;
+  if($('#topChrome').style.display==='none'||document.body.classList.contains('reporting'))return;
+  if(e.key==='ArrowRight')go(cur+2);if(e.key==='ArrowLeft')go(cur);
+});
+
+/* ---------------- toast ---------------- */
+let toastT,undoFn=null;
+function toast(msg,undo){$('#toastMsg').textContent=msg;const u=$('#toastUndo');undoFn=undo||null;u.style.display=undo?'inline':'none';$('#toast').classList.add('on');clearTimeout(toastT);toastT=setTimeout(()=>$('#toast').classList.remove('on'),undo?7000:2600)}
+$('#toastUndo').onclick=()=>{if(undoFn)undoFn();undoFn=null;$('#toast').classList.remove('on')};
+
+/* ---------------- actions ---------------- */
+function action(a){
+  toggleDrawer(false);
+  if(a==='report')return openReport();
+  if(a==='printfilled')return printAll(false);
+  if(a==='printblank')return printAll(true);
+  if(a==='printpage')return window.print();
+  if(a==='export')return exportData();
+  if(a==='import')return $('#importFile').click();
+  if(a==='sample')return loadSample();
+  if(a==='clearsample')return clearSample();
+  if(a==='clearall')return clearAll();
+  if(a==='help'){$('#veil').classList.add('on');$('#helpModal').classList.add('on');return}
+  if(a==='cover'){showCover();return}
+  if(a==='clearpage')return clearPage();
+}
+function pageKeys(i){const ks=FIELDS.filter(f=>f.page===i).map(f=>f.id);if(i===13+14)for(let j=1;j<=20;j++)ks.push('ws15_f'+j);if(PAGES[i]&&PAGES[i].key==='ws08')ks.push('ws08_dep');return ks}
+function clearPage(){
+  const ks=pageKeys(cur);if(!ks.length)return;
+  if(!confirm('Clear everything you typed on this page? You can undo right after.'))return;
+  const snap={v:{},c:{}};ks.forEach(k=>{if(S.v[k]!==undefined)snap.v[k]=S.v[k];if(S.c[k])snap.c[k]=true;delete S.v[k];delete S.c[k]});
+  saveNow();go(cur+1,true);
+  toast('Page cleared.',()=>{Object.assign(S.v,snap.v);Object.assign(S.c,snap.c);saveNow();go(cur+1,true);toast('Restored.')});
+}
+function exportData(){
+  const blob=new Blob([JSON.stringify({app:'problem-solving-workbook',version:1,exported:new Date().toISOString(),data:S},null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='problem-solving-workbook-backup-'+new Date().toISOString().slice(0,10)+'.json';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500);toast('Backup downloaded.');
+}
+$('#importFile').onchange=e=>{
+  const f=e.target.files[0];if(!f)return;const r=new FileReader();
+  r.onload=()=>{try{const d=JSON.parse(r.result);const dd=d.data||d;if(!dd||typeof dd.v!=='object')throw 0;
+    if(!confirm('Replace what is currently in this app with the backup?'))return;
+    S.v=dd.v||{};S.c=dd.c||{};S.log=dd.log||[];S.meta=Object.assign(S.meta,dd.meta||{});saveNow();applySettings();go(cur+1,true);toast('Backup imported.');}catch(err){toast('That file is not a valid backup.')}};
+  r.readAsText(f);e.target.value='';
+};
+const SAMPLE={
+ w_name:'Sample Owner',w_date:'2026-11-02',w_why:'I am busy every week but my bank balance never reflects it.',
+ q_gut:'4',q_hope:'That it is fixable.',q1:'2',q2:'2',q3:'1',q4:'2',q5:'2',q6:'3',q7:'1',q8:'3',q9:'2',q10:'1',q_stung_n:'8',q_stung_why:`I genuinely could not tell you my break-even number.`,
+ g1_a:'Invoices go out on Friday morning, the buffer is growing, and I take a salary without guilt.',g1_b:'2,500 a month — rent, food, school fees, and a small saving.',
+ g2_rev:'25,000',g2_profit:'4,500 owner pay + 1,000 profit',g2_habit:'30-minute CFO hour every Monday',
+ ws04_1:'8500',ws04_2:'3200',ws04_3:'30',ws04_4:'1500',ws04_6:`I assumed I was fine. The numbers say I'm barely above break-even.`,
+ ws08_1:'5',ws08_2:'45',ws08_3:'15',ws08_4:'35',ws09_1:'4000',ws09_2:'3',ws09_3:'500',
+ ws10_d1_l:'Business credit card',ws10_d1_b:'3200',ws10_d1_r:'24',ws10_d1_m:'110',ws10_d2_l:'Equipment loan',ws10_d2_b:'6500',ws10_d2_r:'9',ws10_d2_m:'240',
+ ws12_list:`Late invoices\nUnderpricing\nNo tax account\nSlow months`,ws12_urgent:'Late invoices — chase this week.',
+ fw03_dec:'Which price increase to test',fw03_a_n:'Raise by 10% for new clients',fw03_a_c:'5',fw03_a_p:'4',fw03_a_s:'5',fw03_a_v:'4',fw03_b_n:'Add a premium package',fw03_b_c:'3',fw03_b_p:'5',fw03_b_s:'2',fw03_b_v:'4',fw03_c_n:'Do nothing',fw03_c_c:'5',fw03_c_p:'1',fw03_c_s:'5',fw03_c_v:'2'
+};
+const SAMPLE_C={a1_0_c:true,a1_1_c:true,cfo_c1:true,cfo_c2:true};
+function loadSample(){
+  if(!confirm('Load a filled-in example? It only fills empty fields, and "Clear sample data" will remove exactly what it added.'))return;
+  const keys=[];Object.keys(SAMPLE).forEach(k=>{if(val(k)===''){S.v[k]=SAMPLE[k];keys.push(k)}});
+  Object.keys(SAMPLE_C).forEach(k=>{if(!S.c[k]){S.c[k]=true;keys.push(k)}});
+  S.meta.sampleKeys=(S.meta.sampleKeys||[]).concat(keys);saveNow();go(cur+1,true);toast(`Sample data loaded (${keys.length} fields).`);
+}
+function clearSample(){
+  const ks=S.meta.sampleKeys||[];if(!ks.length){toast('No sample data to clear.');return}
+  let n=0;ks.forEach(k=>{if(k in SAMPLE&&S.v[k]===SAMPLE[k]){delete S.v[k];n++}if(k in SAMPLE_C&&S.c[k]){delete S.c[k];n++}});
+  S.meta.sampleKeys=[];saveNow();go(cur+1,true);toast(`Sample data cleared (${n} fields). Your own entries were kept.`);
+}
+function clearAll(){
+  if(!confirm('Erase EVERYTHING you have typed, your scores and your weekly log from this device? This cannot be undone (export a backup first if unsure).'))return;
+  if(!confirm('Really erase everything?'))return;
+  S.v={};S.c={};S.log=[];S.meta.base=null;S.meta.sampleKeys=[];saveNow();go(3,true);toast('Everything erased.');
+}
+function applySettings(){
+  document.documentElement.style.setProperty('--fs',S.meta.font||1);$('#setFont').value=String(S.meta.font||1);$('#setCur').value=S.meta.cur||'$';$('#setBiz').value=S.meta.biz||'';
+}
+$('#setBiz').oninput=e=>{S.meta.biz=e.target.value;save()};
+$('#setCur').onchange=e=>{S.meta.cur=e.target.value;saveNow();renderCalcs($('#pageView'))};
+$('#setFont').onchange=e=>{S.meta.font=+e.target.value;saveNow();applySettings()};
+
+/* ---------------- printing ---------------- */
+function printAll(blank){
+  const host=$('#printAll');
+  const saved=blank?{v:S.v,c:S.c,log:S.log}:null;
+  if(blank){S.v={};S.c={};S.log=[]}
+  host.innerHTML=PAGES.map((p,i)=>i===0?'':`<section class="pg printpg">${p.html}${ccFooter(i)}</section>`).join('');
+  hydrate(host);renderCalcs(host);
+  $$('[id]',host).forEach(el=>el.removeAttribute('id'));$$('label[for]',host).forEach(l=>l.removeAttribute('for'));
+  // cover page first
+  host.insertAdjacentHTML('afterbegin',`<section class="pg printpg" style="background:var(--brown);color:#fff;text-align:center;min-height:240mm;padding:40px;-webkit-print-color-adjust:exact;print-color-adjust:exact"><div class="ar" style="font-size:42px;margin-top:20px" lang="ar">${BAS}</div><p style="margin-top:90px;letter-spacing:.05em;font-weight:700">FOR SMALL BUSINESS OWNERS</p><h1 style="font-size:60px;line-height:1.1;margin:10px 0">The Problem<br>Solving<br>Workbook</h1><p style="font-size:19px;max-width:480px;margin:20px auto">Fix the money leaks, master your numbers, and build a calmly profitable small business</p><p style="margin-top:120px;font-size:13px">A Money Mindset &amp; Budgeting Workbook for Small Business Owners<br>Developed by Zaid Adib Ansari and the Balanced Middle Path Academy in conjunction with the Creed to Commerce Framework.</p><p style="font-family:Amiri,serif;color:var(--gold)">${CCLINE}</p></section>`);
+  document.body.classList.add('printing-all');
+  const done=()=>{document.body.classList.remove('printing-all');host.innerHTML='';if(saved){S.v=saved.v;S.c=saved.c;S.log=saved.log}window.removeEventListener('afterprint',done)};
+  window.addEventListener('afterprint',done);
+  setTimeout(()=>window.print(),250);
+}
+
+/* ---------------- report ---------------- */
+const RSECS=[
+ ['summary','Executive summary',true],['quiz','Self-assessment',true],['goals','Goals',true],['ws','Core worksheets',true],['refl','Reflections',true],['action','30-Day action plan',true],['fw','Frameworks',true],['final','Final review & next steps',true],['notes','Notes',true]
+];
+const RMODE={answered:true};
+function buildOptions(){
+  $('#rOpts').innerHTML=RSECS.map(s=>`<label><input type="checkbox" data-rs="${s[0]}" ${s[2]?'checked':''}> ${s[1]}</label>`).join('')+`<label><input type="checkbox" id="rAnswered" checked> Answered fields only</label>`;
+  $$('#rOpts input').forEach(i=>i.onchange=renderReport);
+}
+function openReport(){toggleDrawer(false);if(!$('#rOpts').children.length)buildOptions();document.body.classList.add('reporting');showApp();window.scrollTo(0,0);renderReport()}
+$('#rBack').onclick=()=>{document.body.classList.remove('reporting');go(cur+1,true)};
+$('#rPrint').onclick=()=>{document.body.classList.add('printing-report');const done=()=>{document.body.classList.remove('printing-report');window.removeEventListener('afterprint',done)};window.addEventListener('afterprint',done);setTimeout(()=>window.print(),150)};
+function loadScript(src){return new Promise((res,rej)=>{const s=document.createElement('script');s.src=src;s.onload=res;s.onerror=rej;document.head.appendChild(s)})}
+$('#rDownload').onclick=async()=>{
+  const btn=$('#rDownload');const old=btn.textContent;btn.textContent='Preparing PDF…';btn.disabled=true;
+  try{
+    if(!window.html2pdf)await loadScript('https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js');
+    const name=(val('w_name')||S.meta.biz||'My').replace(/[^\w\- ]+/g,'').trim().replace(/\s+/g,'-');
+    const el=$('#reportDoc');
+    await html2pdf().set({margin:[12,10,18,10],filename:`Problem-Solving-Workbook-Report-${name}-${new Date().toISOString().slice(0,10)}.pdf`,image:{type:'jpeg',quality:.96},html2canvas:{scale:2,useCORS:true,backgroundColor:'#ffffff'},jsPDF:{unit:'mm',format:'a4',orientation:'portrait'},pagebreak:{mode:['css','legacy'],avoid:['.rrow','.rtab','.rkpi','.rcover']}})
+     .from(el).toPdf().get('pdf').then(pdf=>{const n=pdf.internal.getNumberOfPages();for(let i=1;i<=n;i++){pdf.setPage(i);pdf.setFontSize(8);pdf.setTextColor(31,77,58);pdf.text('Creed to Commerce(TM)  |  The Balanced Middle Path Academy, LLC  |  The Problem Solving Workbook',105,289,{align:'center'});pdf.setTextColor(140);pdf.text(`Page ${i} of ${n}`,200,289,{align:'right'});}}).save();
+    toast('PDF downloaded.');
+  }catch(err){toast('Could not build the file here — opening the print dialog instead (choose “Save as PDF”).');setTimeout(()=>$('#rPrint').click(),800)}
+  btn.textContent=old;btn.disabled=false;
+};
+function rrow(label,v,only){const has=v!=null&&String(v).trim()!=='';if(only&&!has)return '';return `<div class="rrow"><div class="rq">${esc(label)}</div><div class="ra ${has?'':'empty'}">${has?esc(v):'(not answered)'}</div></div>`}
+function pageFieldsReport(i,only){
+  return FIELDS.filter(f=>f.page===i&&f.type!=='check'&&f.type!=='radio').map(f=>{let v=val(f.id);if(/^(w_date|a_d1|a_d30|n_retake|cfo_week|a\d_\d_d)$/.test(f.id))v=fmtDate(v);return rrow(f.label,v,only)}).join('');
+}
+function renderReport(){
+  const sel={};$$('#rOpts [data-rs]').forEach(c=>sel[c.dataset.rs]=c.checked);const only=$('#rAnswered')?$('#rAnswered').checked:true;
+  const o=overall();const qs=quizScore();const prof=qs.n===10?profileOf(qs.t):null;const c4=calc04(),c8=calc08(),c9=calc09(),c10=calc10(),a=actionStats();
+  const who=val('w_name')||'Workbook owner';
+  let h=`<div class="rcover"><div class="ar bas" lang="ar">${BAS}</div><div class="gold"></div><h1>The Problem Solving Workbook</h1><div class="sub">Personal Progress Report</div><div class="meta"><span><b>Prepared for:</b> ${esc(who)}</span>${S.meta.biz?`<span><b>Business:</b> ${esc(S.meta.biz)}</span>`:''}<span><b>Report date:</b> ${esc(new Date().toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'}))}</span>${val('w_date')?`<span><b>Began:</b> ${esc(fmtDate(val('w_date')))}</span>`:''}</div></div>`;
+  if(sel.summary){
+    h+=`<div class="rsec"><h2>Executive Summary</h2><div class="rkpi">
+      <div><small>Workbook completion</small><b>${o.p}%</b></div>
+      <div><small>Self-assessment</small><b>${qs.n===10?qs.t+' / 30':'not finished'}</b></div>
+      <div><small>Profile</small><b style="font-size:13.5px">${prof?esc(prof.t):'—'}</b></div>
+      <div><small>Break-even / month</small><b>${c4.be!=null?money(c4.be):'—'}</b></div>
+      <div><small>Profit-First split</small><b>${c8.any?pct(c8.total):'—'}</b></div>
+      <div><small>Buffer funded</small><b>${c9.funded!=null?pct(c9.funded):'—'}</b></div>
+      <div><small>Total debt</small><b>${c10.d.length?money(c10.tb):'—'}</b></div>
+      <div><small>30-day moves done</small><b>${a.d} / ${a.t}</b></div></div>`;
+    const pri=[['Biggest money problem, restated',val('ws01_2')],['Urgent & important this month',val('ws12_urgent')],['My constraint',val('ws13_statement')],['Root cause found',val('ws11_5')],['90-day revenue target',val('g2_rev')],['90-day profit / owner-pay target',val('g2_profit')],['Weekly money habit',val('g2_habit')],['Experiment to test within 7 days',val('ws15_pick')]];
+    const any=pri.some(p=>p[1].trim());
+    if(any)h+=`<h3>My priorities at a glance</h3><table class="rtab"><tbody>${pri.filter(p=>p[1].trim()).map(p=>`<tr><th style="width:36%">${esc(p[0])}</th><td style="white-space:pre-wrap">${esc(p[1])}</td></tr>`).join('')}</tbody></table>`;
+    h+=`<h3>Completion by section</h3><table class="rtab"><tbody>${SECS.map((s,i)=>{const p=secProgress(i+1);return `<tr><td>${String(i+1).padStart(2,'0')} · ${SECNAMES[i]}</td><td style="width:22%">${p.d} of ${p.t}</td><td style="width:14%">${p.t?Math.round(p.d/p.t*100):0}%</td></tr>`}).join('')}</tbody></table></div>`;
+  }
+  if(sel.quiz){
+    h+=`<div class="rsec"><h2>Money Mindset Self-Assessment</h2>`+rrow('Gut number (1–10 control)',val('q_gut'),only)+rrow('What I hoped this would reveal',val('q_hope'),only)+
+      `<table class="rtab"><thead><tr><th style="width:6%">#</th><th>Statement</th><th style="width:16%">Answer</th><th style="width:8%">Pts</th></tr></thead><tbody>${QS.map((s,i)=>{const v=val('q'+(i+1));return `<tr><td>${i+1}</td><td>${esc(s)}</td><td>${v===''?'—':OPT[+v]}</td><td>${v===''?'—':v}</td></tr>`}).join('')}</tbody></table>`+
+      `<div class="rkpi"><div><small>Total score</small><b>${val('q_total')||qs.t} / 30</b></div>${S.meta.base!=null?`<div><small>Day-1 baseline</small><b>${S.meta.base} / 30</b></div>`:''}${prof?`<div><small>Profile</small><b style="font-size:13.5px">${esc(prof.t)}</b></div>`:''}</div>`+
+      (prof?`<div class="rrow"><div class="rq">What it means</div><div class="ra">${esc(prof.x)}</div></div><div class="rrow"><div class="rq">Where to start</div><div class="ra">${prof.go.map(g=>esc(g[1])+' (p.'+g[0]+')').join(' · ')}</div></div>`:'')+
+      rrow(`The statement that stung the most (#${val('q_stung_n')||'?'})`,val('q_stung_why'),only)+`</div>`;
+  }
+  const secPages=(title,from,to,extraFn)=>{
+    let b='';for(let i=from-1;i<=to-1;i++){
+      let inner=pageFieldsReport(i,only);const ex=extraFn?extraFn(i):'';
+      if(!inner&&!ex)continue;b+=`<h3>${esc(PAGES[i].rt||PAGES[i].foot)}</h3>${inner}${ex}`;}
+    return b?`<div class="rsec"><h2>${title}</h2>${b}</div>`:'';
+  };
+  const wsExtraRep=i=>{const k=PAGES[i].key;
+    if(k==='ws04'&&(c4.be!=null))return `<div class="rkpi"><div><small>Break-even</small><b>${money(c4.be)}</b></div>${c4.gap!=null?`<div><small>${c4.gap>=0?'Cushion':'Shortfall'}</small><b>${money(Math.abs(c4.gap))}</b></div>`:''}</div>`;
+    if(k==='ws08'&&c8.any)return `<div class="rkpi"><div><small>Total allocated</small><b>${pct(c8.total)}</b></div></div>`;
+    if(k==='ws09'&&c9.target!=null)return `<div class="rkpi"><div><small>Buffer target</small><b>${money(c9.target)}</b></div><div><small>Still to build</small><b>${money(c9.gap)}</b></div><div><small>Funded</small><b>${pct(c9.funded)}</b></div></div>`;
+    if(k==='ws10'&&c10.d.length)return `<div class="rkpi"><div><small>Total balance</small><b>${money(c10.tb)}</b></div><div><small>Minimums / month</small><b>${money(c10.tm)}</b></div><div><small>Avg rate</small><b>${pct(c10.wr)}</b></div></div><div class="rrow"><div class="rq">Suggested order</div><div class="ra">Highest rate first: ${c10.av.map(esc).join(' → ')}\nSmallest balance first: ${c10.sb.map(esc).join(' → ')}</div></div>`;
+    if(k==='ws15'){const f=[...Array(20)].map((_,j)=>j+1).filter(j=>S.c['ws15_f'+j]&&val('ws15_s'+j));return f.length?`<div class="rrow"><div class="rq">Starred favourites</div><div class="ra">${f.map(j=>esc(val('ws15_s'+j))).join('\n')}</div></div>`:''}
+    return '';};
+  if(sel.goals)h+=secPages('Goal Setting',10,13);
+  if(sel.ws)h+=secPages('Core Problem-Solving Worksheets',14,31,wsExtraRep);
+  if(sel.refl)h+=secPages('Reflection Prompts',32,45);
+  if(sel.action){
+    let b=`<div class="rkpi"><div><small>Moves completed</small><b>${a.d} of ${a.t}</b></div>${val('a_d1')?`<div><small>Day 1</small><b style="font-size:13px">${esc(fmtDate(val('a_d1')))}</b></div>`:''}${val('a_d30')?`<div><small>Day 30</small><b style="font-size:13px">${esc(fmtDate(val('a_d30')))}</b></div>`:''}</div>`;
+    PHASES.forEach(p=>{b+=`<h3>Phase ${p.n} · ${p.name} (${p.days})</h3><table class="rtab"><thead><tr><th style="width:5%">✓</th><th>Move</th><th style="width:16%">By when</th><th style="width:30%">First tiny step</th></tr></thead><tbody>${p.tasks.map((t,i)=>`<tr><td>${S.c[`a${p.n}_${i}_c`]?'☑':'☐'}</td><td>${esc(t)}</td><td>${esc(fmtDate(val(`a${p.n}_${i}_d`))||'—')}</td><td>${esc(val(`a${p.n}_${i}_s`)||'—')}</td></tr>`).join('')}</tbody></table>`});
+    b+=rrow('My accountability move',val('a_acc'),only);
+    h+=`<div class="rsec"><h2>The 30-Day Action Plan</h2>${b}</div>`;
+  }
+  if(sel.fw){
+    const mx=matrixRows();const mxHas=mx.some(r=>r.total!=null||r.name);
+    h+=secPages('Frameworks & Templates',50,55,i=>{
+      if(PAGES[i].key==='fw03'&&mxHas)return `<table class="rtab"><thead><tr><th>Option</th><th>Cost</th><th>Profit</th><th>Speed</th><th>Values</th><th>Total</th></tr></thead><tbody>${mx.map(r=>`<tr><td>${esc(r.name||'Option '+r.k.toUpperCase())}</td>${r.sc.map(x=>`<td>${x==null?'—':x}</td>`).join('')}<td><b>${r.total==null?'—':r.total}</b></td></tr>`).join('')}</tbody></table>`;
+      if(PAGES[i].cfo&&S.log.length)return `<h3>Weekly CFO log</h3><table class="rtab"><thead><tr><th>Week of</th><th>Ticked</th><th>Cash</th><th>Notes</th></tr></thead><tbody>${S.log.map(l=>`<tr><td>${esc(fmtDate(l.week)||'—')}</td><td>${l.done}/${l.total}</td><td>${esc(l.cash||'—')}</td><td>${esc(l.note||'')}</td></tr>`).join('')}</tbody></table>`;
+      return '';});
+  }
+  if(sel.final){
+    let b=`<h3>Final Review</h3>`+((val('f_start')||val('f_today')||!only)?rrow('Self-assessment score: start → today',`${val('f_start')||(S.meta.base!=null?S.meta.base:'?')} → ${val('f_today')||'?'}`,false):'')+pageFieldsReport(57,only).replace(/<div class="rrow"><div class="rq">Self-assessment score[^]*?<\/div><\/div>/g,'');
+    b+=`<h3>What's Next — 30-Day Continuation Plan</h3>`+pageFieldsReport(58,only);
+    BOOKS.forEach((bk,i)=>{if(val('bk_s'+(i+1)))b+=rrow(`Book: ${bk[0]}`,val('bk_s'+(i+1)),true)});b+=rrow(`The first book I'll read`,val('bk_first'),true);
+    h+=`<div class="rsec"><h2>Final Review &amp; Next Steps</h2>${b}</div>`;
+  }
+  if(sel.notes){const n=pageFieldsReport(59,true)+pageFieldsReport(60,true);if(n)h+=`<div class="rsec"><h2>Working Notes</h2>${n}</div>`}
+  h+=`<div class="rfoot fixed"><b>Creed to Commerce™</b> · The Balanced Middle Path Academy, LLC</div><div class="rdisc">Developed by Zaid Adib Ansari and the Balanced Middle Path Academy in conjunction with the Creed to Commerce Framework. This report reflects the owner's own entries and is educational only — not financial, tax, or accounting advice. Please consult a qualified professional for decisions specific to your business.</div>`;
+  $('#reportDoc').innerHTML=h;
+}
+
+/* ---------------- init ---------------- */
+function init(){
+  loadState();buildPages();buildPills();buildJump();applySettings();
+  const hasData=Object.keys(S.v).length||Object.keys(S.c).length;
+  if(hasData)$('#btnResume').style.display='inline-block';
+  const m=location.hash.match(/p=(\d+)/);
+  if(m&&+m[1]>=2){showApp();go(+m[1]);}
+  if('serviceWorker' in navigator&&location.protocol.startsWith('http')){navigator.serviceWorker.register('sw.js').catch(()=>{})}
+}
+window.addEventListener('hashchange',()=>{const m=location.hash.match(/p=(\d+)/);if(m&&+m[1]-1!==cur&&$('#topChrome').style.display!=='none')go(+m[1])});
+init();
+// expose for debugging/testing
+window.__psw={S:()=>S,go,PAGES:()=>PAGES,FIELDS:()=>FIELDS,renderReport};
+})();
+</script>
+</body>
+</html>
